@@ -1,0 +1,592 @@
+<style>
+  <head>body {
+    margin: 0;
+    color: #6a6f8c;
+    background: #c8c8c8;
+    font: 600 16px/18px 'Open Sans', sans-serif;
+  }
+
+  *,
+  :after,
+  :before {
+    box-sizing: border-box
+  }
+
+  .clearfix:after,
+  .clearfix:before {
+    content: '';
+    display: table
+  }
+
+  .clearfix:after {
+    clear: both;
+    display: block
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none
+  }
+
+  .login-wrap {
+    width: 100%;
+    margin: auto;
+    max-width: 525px;
+    min-height: 670px;
+    position: relative;
+    background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+  }
+
+  .login-html {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 90px 70px 50px 70px;
+    background: rgba(40, 57, 101, .9);
+  }
+
+  .login-html .tab,
+  .login-form .group .label,
+  .login-form .group .button {
+    text-transform: uppercase;
+  }
+
+  .login-form {
+    min-height: 345px;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .login-form .group {
+    margin-bottom: 15px;
+  }
+
+  .login-form .group .label,
+  .login-form .group .input,
+  .login-form .group .button {
+    width: 100%;
+    color: #fff;
+    display: block;
+  }
+
+  .login-form .group .input,
+  .login-form .group .button {
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .1);
+  }
+
+  .login-form .group input[data-type="password"] {
+    text-security: circle;
+    -webkit-text-security: circle;
+  }
+
+  .login-form .group .label {
+    color: #aaa;
+    font-size: 12px;
+  }
+
+  .login-form .group .button {
+    background: #1161ee;
+  }
+
+  .login-form .group label .icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    position: relative;
+    display: inline-block;
+    background: rgba(255, 255, 255, .1);
+  }
+
+  .login-form .group label .icon:before,
+  .login-form .group label .icon:after {
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    transition: all .2s ease-in-out 0s;
+  }
+
+  .login-form .group label .icon:before {
+    left: 3px;
+    width: 5px;
+    bottom: 6px;
+    transform: scale(0) rotate(0);
+  }
+
+  .login-form .group label .icon:after {
+    top: 6px;
+    right: 0;
+    transform: scale(0) rotate(0);
+  }
+
+  .login-form .group .check:checked+label {
+    color: #fff;
+  }
+
+  .login-form .group .check:checked+label .icon {
+    background: #1161ee;
+  }
+
+  .login-form .group .check:checked+label .icon:before {
+    transform: scale(1) rotate(45deg);
+  }
+
+  .login-form .group .check:checked+label .icon:after {
+    transform: scale(1) rotate(-45deg);
+  }
+
+  .login-form .group .button {
+    background: #1161ee;
+  }
+
+  .login-form .group label .icon:before,
+  .login-form .group label .icon:after {
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    transition: all .2s ease-in-out 0s;
+  }
+
+  .login-form .group label .icon:before {
+    left: 3px;
+    width: 5px;
+    bottom: 6px;
+    transform: scale(0) rotate(0);
+  }
+
+  .login-form .group label .icon:after {
+    top: 6px;
+    right: 0;
+    transform: scale(0) rotate(0);
+  }
+
+  .login-form .group .check:checked+label {
+    color: #fff;
+  }
+
+  .login-form .group .check:checked+label .icon {
+    background: #1161ee;
+  }
+
+  .login-form .group .check:checked+label .icon:before {
+    transform: scale(1) rotate(45deg);
+  }
+
+  .login-form .group .check:checked+label .icon:after {
+    transform: scale(1) rotate(-45deg);
+  }
+
+  .login-html .tab+.sign-up+.login-form .sign-up-htm {
+    transform: rotate(0);
+  }
+
+  .hr {
+    height: 2px;
+    margin: 60px 0 50px 0;
+    background: rgba(255, 255, 255, .2);
+  }
+
+  .foot-lnk {
+    text-align: center;
+  }
+
+  body {
+    margin: 0;
+    color: #6a6f8c;
+    background: #c8c8c8;
+    font: 600 16px/18px 'Open Sans', sans-serif;
+  }
+</style>
+
+
+</head>
+
+<body>
+
+ 
+
+  <div class="login-wrap">
+      <style>
+    body {
+      margin: 0;
+      color: #6a6f8c;
+      background: #c8c8c8;
+      font: 600 16px/18px 'Open Sans', sans-serif;
+    }
+
+    *,
+    :after,
+    :before {
+      box-sizing: border-box
+    }
+
+    .clearfix:after,
+    .clearfix:before {
+      content: '';
+      display: table
+    }
+
+    .clearfix:after {
+      clear: both;
+      display: block
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .login-wrap {
+      width: 100%;
+      margin: auto;
+      max-width: 525px;
+      min-height: 670px;
+      position: relative;
+      background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+      box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+    }
+
+    .login-html {
+      width: 100%;
+      height: 108%;
+      position: absolute;
+      padding: 15px 70px 50px 70px;
+      background: #534c4c;
+    }
+   
+
+    .login-html .tab,
+    .login-form .group .label,
+    .login-form .group .button {
+      text-transform: uppercase;
+    }
+
+    .login-form {
+      min-height: 345px;
+      position: relative;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+
+    .login-form .group {
+      margin-bottom: 15px;
+    }
+
+    .login-form .group .label,
+    .login-form .group .input,
+    .login-form .group .button {
+      width: 100%;
+      color: #fff;
+      display: block;
+    }
+
+    .login-form .group .input,
+    .login-form .group .button {
+      border: none;
+      padding: 15px 20px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .login-form .group input[data-type="password"] {
+      text-security: circle;
+      -webkit-text-security: circle;
+    }
+
+    .login-form .group .label {
+      color: #0b0a0a;
+      font-size: 12px;
+    }
+
+    .login-form .group .button {
+      background: #16171a;
+    }
+
+    .login-form .group label .icon {
+      width: 15px;
+      height: 15px;
+      border-radius: 2px;
+      position: relative;
+      display: inline-block;
+      background: rgba(106, 98, 98, 0.1);
+    }
+
+    .login-form .group label .icon:before,
+    .login-form .group label .icon:after {
+      content: '';
+      width: 10px;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      transition: all .2s ease-in-out 0s;
+    }
+
+    .login-form .group label .icon:before {
+      left: 3px;
+      width: 5px;
+      bottom: 6px;
+      transform: scale(0) rotate(0);
+    }
+
+    .login-form .group label .icon:after {
+      top: 6px;
+      right: 0;
+      transform: scale(0) rotate(0);
+    }
+
+    .login-form .group .check:checked+label {
+      color: #fff;
+    }
+
+    .login-form .group .check:checked+label .icon {
+      background: #1161ee;
+    }
+
+    .login-form .group .check:checked+label .icon:before {
+      transform: scale(1) rotate(45deg);
+    }
+
+    .login-form .group .check:checked+label .icon:after {
+      transform: scale(1) rotate(-45deg);
+    }
+
+    .login-form .group .button {
+      background: #1161ee;
+    }
+
+    .login-form .group label .icon:before,
+    .login-form .group label .icon:after {
+      content: '';
+      width: 10px;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      transition: all .2s ease-in-out 0s;
+    }
+
+    .login-form .group label .icon:before {
+      left: 3px;
+      width: 5px;
+      bottom: 6px;
+      transform: scale(0) rotate(0);
+    }
+
+    .login-form .group label .icon:after {
+      top: 6px;
+      right: 0;
+      transform: scale(0) rotate(0);
+    }
+
+    .login-form .group .check:checked+label {
+      color: #fff;
+    }
+
+    .login-form .group .check:checked+label .icon {
+      background: #1161ee;
+    }
+
+    .login-form .group .check:checked+label .icon:before {
+      transform: scale(1) rotate(45deg);
+    }
+
+    .login-form .group .check:checked+label .icon:after {
+      transform: scale(1) rotate(-45deg);
+    }
+
+    .login-html .tab+.sign-up+.login-form .sign-up-htm {
+      transform: rotate(0);
+    }
+
+    .hr {
+      height: 2px;
+      margin: 60px 0 50px 0;
+      background: rgba(255, 255, 255, .2);
+    }
+
+    .foot-lnk {
+      text-align: center;
+    }
+
+    .signup-heading {
+      color: aliceblue;
+    }
+
+    
+  .login-form .group .input.invalid {
+    border: 2px solid red;
+  }
+
+  .login-form .group .error-message {
+    display: none;
+    color: red;
+    margin-top: 5px;
+  }
+
+  .login-form .group .error-message.active {
+    display: block;
+  }
+
+    .login-form .group .input.invalid {
+    border: 2px solid red;
+  }
+
+  .login-form .group .error-message {
+    display: none;
+    color: red;
+    margin-top: 5px;
+  }
+
+  .login-form .group .error-message.active {
+    display: block;
+  }
+</style>
+ 
+ 
+</head>
+
+<body>
+  <div class="login-wrap">
+    <div class="login-html">
+      <h2 class="signup-heading">Welcome to Sign Up Page</h2>
+      <div class="login-form">
+        <form method="POST" action="/signup">
+          <div class="group">
+            <label for="user" class="label">Username</label>
+            <input id="user" name="name" type="text" class="input" maxlength="20" required>
+            <p id="name-error" class="error-message">Name should not exceed 20 characters.</p>
+          </div>
+          <div class="group">
+            <label for="email" class="label">E-mail</label>
+            <input id="email" name="email" type="email" class="input" data-type="email" required>
+            <p id="email-error" class="error-message">Invalid email address.</p>
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Password</label>
+            <input id="pass" name="password" type="password" class="input" data-type="password" required>
+          </div>
+          <div class="group">
+            <label for="confirm-pass" class="label">Confirm Password</label>
+            <input id="confirm-pass" name="confirmPassword" type="password" class="input" data-type="password" required>
+            <p id="password-error" class="error-message">Passwords do not match.</p>
+          </div>
+          <div class="group">
+            <label for="mobile" class="label">Mobile Number</label>
+            <input id="mobile" name="mobile" type="text" class="input" required>
+            <p id="mobile-error" class="error-message">Invalid mobile number.</p>
+          </div>
+          <div class="group">
+            <input type="submit" class="button" value="Sign Up">
+          </div>
+          <div class="foot-lnk">
+            <a href="/login">Already a Member?</a><br><br>
+          </div>
+        </form>
+        <!-- Add this code where you want to display the error message -->
+{{#if message}}
+  <div class="error-message">
+    {{message}}
+  </div>
+{{/if}}
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+  const nameInput = document.getElementById('user');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('pass');
+  const confirmPassInput = document.getElementById('confirm-pass');
+  const mobileInput = document.getElementById('mobile');
+  const nameError = document.getElementById('name-error');
+  const emailError = document.getElementById('email-error');
+  const passwordError = document.getElementById('password-error');
+  const mobileError = document.getElementById('mobile-error');
+
+  function validateName() {
+    const name = nameInput.value;
+    if (name.length > 20) {
+      nameInput.classList.add('invalid');
+      nameError.classList.add('active');
+    } else {
+      nameInput.classList.remove('invalid');
+      nameError.classList.remove('active');
+    }
+  }
+
+  function validateEmail() {
+    const email = emailInput.value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      emailInput.classList.add('invalid');
+      emailError.classList.add('active');
+    } else {
+      emailInput.classList.remove('invalid');
+      emailError.classList.remove('active');
+    }
+  }
+
+  function validatePassword() {
+    const password = passwordInput.value;
+    const confirmPassword = confirmPassInput.value;
+    if (password !== confirmPassword) {
+      passwordInput.classList.add('invalid');
+      confirmPassInput.classList.add('invalid');
+      passwordError.classList.add('active');
+    } else {
+      passwordInput.classList.remove('invalid');
+      confirmPassInput.classList.remove('invalid');
+      passwordError.classList.remove('active');
+    }
+  }
+
+  function validateMobile() {
+    const mobile = mobileInput.value;
+    const mobilePattern = /^\d{10}$/;
+    if (!mobilePattern.test(mobile)) {
+      mobileInput.classList.add('invalid');
+      mobileError.classList.add('active');
+    } else {
+      mobileInput.classList.remove('invalid');
+      mobileError.classList.remove('active');
+    }
+  }
+
+  function validateForm(event) {
+    event.preventDefault();
+    validateName();
+    validateEmail();
+    validatePassword();
+    validateMobile();
+
+    // Check if any error message is active and prevent form submission if there are errors
+    if (
+      nameError.classList.contains('active') ||
+      emailError.classList.contains('active') ||
+      passwordError.classList.contains('active') ||
+      mobileError.classList.contains('active')
+    ) {
+      return false;
+    }
+
+    // If no errors, allow form submission
+    event.target.submit();
+  }
+
+  nameInput.addEventListener('input', validateName);
+  emailInput.addEventListener('input', validateEmail);
+  passwordInput.addEventListener('input', validatePassword);
+  confirmPassInput.addEventListener('input', validatePassword);
+  mobileInput.addEventListener('input', validateMobile);
+
+  const form = document.querySelector('form');
+  form.addEventListener('submit', validateForm);
+</script>
