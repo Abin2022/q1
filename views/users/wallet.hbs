@@ -58,6 +58,7 @@
     {{!--
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/themify-icons.css"> --}}
+  <link rel ="stylesheet" href="/stylesheets/mainatin.css"
 
 
 
@@ -67,7 +68,6 @@
 </head>
 
 <body>
-
 
 
 
@@ -88,38 +88,49 @@
 
                                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                                     data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false"
-                                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i
-                                            class="ti-menu"></i></span></button>
+                                    aria-label="Toggle navigation"><span class="navbar-toggler-icon">
+                                         <i class="ti-menu-3-lines"></i>
+                                    </span></button>
                                 <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                     <ul class="navbar-nav animated" id="nav">
                                         <li class="nav-item active"><a class="nav-link" href="/home"> Home</a></li>
                                         <li class="nav-item dropdown">
                                         <li class="nav-item active"><a class="nav-link" href="/mobile">Mobiles</a></li>
                                         <li class="nav-item active"><a class="nav-link" href="/laptop"> Laptops</a></li>
-                                        <li class="nav-item active"><a class="nav-link" href="/shop">SHOP</a></li>
+                                        <li class="nav-item active"><a class="nav-link" href="/shop-page">SHOP</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/order-details">Orders</a></li>
                                         <li class="nav-item active"><a class="nav-link" href="/cart">Cart<i
                                                     class="ti-bag"></i> </a>
                                         <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+
+                                          {{#if is_login}}
+                        <div class="help-line hide-on-laptop">
+                            <a href="/logout">LOGOUT</a>
+                        </div>
+                        {{else}}
+                        <div class="help-line hide-on-laptop">
+                            <a href="/logout">LOGOUT</a>
+                        </div>
+                        {{/if}}
                                     </ul>
                                 </div>
                             </nav>
                         </div>
                         <!-- Help Line -->
-
-                        <div class="help-line">
+                        {{#if is_login}}
+                        <div class="help-line hide-on-small-laptop">
                             <a href="/logout">LOGOUT</a>
                         </div>
-
+                        {{else}}
+                        <div class="help-line hide-on-small-laptop">
+                            <a href="/logout">LOGOUT</a>
+                        </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
         </div>
         </header>
-        <!-- ****** Header Area End ****** -->
-
-
-
 
 
 

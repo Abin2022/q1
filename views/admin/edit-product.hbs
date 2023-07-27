@@ -255,7 +255,7 @@
 
                         <div class="mb-3">
                             <label data-productid="{{product._id}}" id="img" for="image" class="form-label">Image</label>
-                            <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" multiple >
+                            <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" multiple required >
 
                             <div class="image-container">
 
@@ -266,11 +266,7 @@
                              
                                     <img src="/uploads/{{this}}" alt="" class="image-preview">
 
-                                    <!-- Pass the index to the deleteimage() function for proper identification -->
-                                    {{!-- <a href="#" onclick="deleteimage({{@index}})" data-imagename="{{this}}"
-                                        class="delete-image" data-index="{{@index}}">
-                                        <i class="bi bi-trash"></i>
-                                    </a> --}}
+                                    
                                 </div>
                                 {{/each}}
                             </div>

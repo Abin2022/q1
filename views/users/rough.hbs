@@ -1,177 +1,65 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .input-group {
-      margin-bottom: 15px;
-    }
-
-    .input-group i {
-      padding: 10px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #1e221e;
-      color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color:crimson;
-    }
-
-    p {
-      text-align: center;
-    }
-
-    a {
-      text-decoration: none;
-      color: #007BFF;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
+<link rel="stylesheet" href="/stylesheets/forget.css">
 
 
+<div class="row">
 
 
+	<div class="col align-items-center flex-col sign-up">
+		<div class="form-wrapper align-items-center">
+			<div class="form sign-up">
+
+				{{!-- here --}}
+				<form method="post" action="/login">
+					<div style="text-align: center;">
+						<h2>Sign In </h2>
+					</div>
+					<div class="input-group">
+						<i class='bx bx-mail-send'></i>
+						<input type="email" name="email" placeholder=" Enter your Email" value="nandakumar@gmail.com">
+
+						{{!-- <input type="email" name="email" placeholder=" Enter your Email"> --}}
+					</div>
+					<div class="input-group">
+						<i class='bx bx-mail-send'></i>
+						<input type="password" name="password" placeholder=" Enter your Password" value="123">
+					</div>
 
 
-<!-- Add an ID to the form to access it in JavaScript -->
-<form method="post" action="/signup" id="signupForm" onsubmit="return validateForm()">
-  <!-- ... your existing form content ... -->
-  <h1>Sign Up</h1>
-    <div class="input-group">
-      <i class="fas fa-user"></i>
-      <input type="text" name="name" placeholder="Username" id="name" maxlength="20" required>
-    </div>
-    <div class="input-group">
-      <i class="fas fa-envelope"></i>
-      <input type="email" name="email" placeholder="Email" id="email"  required>
-    </div>
-    <div class="input-group">
-      <i class="fas fa-phone"></i>
-      <input class="message" type="number" name="mobile" placeholder="Mobile" id="phone" required>
-    </div>
-    <div class="input-group">
-      <i class="fas fa-lock"></i>
-      <input type="password" name="password" placeholder="Password" id="password" required>
-    </div>
-    <div class="input-group">
-      <i class="fas fa-lock"></i>
-      <input type="password" name="confirm_password" placeholder="Confirm Password" id="confirm_password" required>
-    </div>
-    <button>Sign up</button>
-    <p>
-      <span>Already have an account?</span>
-      <a href="/login">Sign in here</a>
-    </p>
-</form>
+					<button>Login</button>
+					<p>
+					<div style="text-align: center;">
 
-<script>
-  function validateForm() {
-    const form = document.getElementById('signupForm');
-    const nameInput = form.elements.name;
-    const emailInput = form.elements.email;
-    const mobileInput = form.elements.mobile;
-    const passwordInput = form.elements.password;
-    const confirmPwdInput = form.elements.confirm_password;
+						<a href="/forget">Forgot password?</a>
 
-    let isValid = true;
+						<br>
 
-    // Regular expressions for validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mobileRegex = /^\d{10}$/;
 
-    // Reset styles to remove previous validation colors
-    resetValidationStyles(nameInput);
-    resetValidationStyles(emailInput);
-    resetValidationStyles(mobileInput);
-    resetValidationStyles(passwordInput);
-    resetValidationStyles(confirmPwdInput);
+						{{!--
+					</div> --}}
+					<a href="/signup">Don't have an account?</a>
+					<br>
 
-    // Validation checks and error messages
-    if (!nameInput.value.trim()) {
-      setErrorStyle(nameInput, "Please enter a valid username.");
-      isValid = false;
-    }
+					{{!-- <div style="text-align: center;"> --}}
+						<a href="/otp" style="text-align: center;">OTP login</a>
 
-    if (!emailRegex.test(emailInput.value)) {
-      setErrorStyle(emailInput, "Please enter a valid email address.");
-      isValid = false;
-    }
+					</div>
 
-    if (!mobileRegex.test(mobileInput.value)) {
-      setErrorStyle(mobileInput, "Please enter a valid 10-digit mobile number.");
-      isValid = false;
-    }
 
-    if (passwordInput.value.length < 8) {
-      setErrorStyle(passwordInput, "Password must be at least 8 characters long.");
-      isValid = false;
-    }
+			</div>
+			</p>
 
-    if (passwordInput.value !== confirmPwdInput.value) {
-      setErrorStyle(confirmPwdInput, "Passwords do not match.");
-      isValid = false;
-    }
 
-    return isValid;
-  }
+			</form>
+			<br>
+			{{!-- {{message}} --}}
+			<div class="message" style="color: red; text-align: center;">
+				{{#if message}}
+				{{message}}
+				{{/if}}
+			</div>
 
-  function setErrorStyle(inputElement, errorMessage) {
-    const inputGroup = inputElement.parentElement;
-    const errorMessageElement = document.createElement('span');
-    errorMessageElement.textContent = errorMessage;
-    errorMessageElement.style.color = 'red';
-    inputGroup.appendChild(errorMessageElement);
-    inputElement.style.borderColor = 'red';
-  }
 
-  function resetValidationStyles(inputElement) {
-    const inputGroup = inputElement.parentElement;
-    const errorMessageElement = inputGroup.querySelector('span');
-    if (errorMessageElement) {
-      errorMessageElement.remove();
-    }
-    inputElement.style.borderColor = '#ccc';
-  }
-</script>
+		</div>
+	</div>
+
+</div>

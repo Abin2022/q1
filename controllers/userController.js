@@ -17,7 +17,7 @@ const moment = require("moment-timezone")
 // const EventEmitter = require('events');
 
 const accountSid = "ACa547f4ad75438fee11d6c1f2b5cc0a4a";
-const authToken = '15270e12134a9b96de1030ff281bf9e7';
+const authToken = 'baabc3d19475aeaa0bcf8df6351a6a44';
 const verifySid = "VAb65553a60d1c6c15f8fb69e14c75d2f9";
 const client = require("twilio")(accountSid, authToken);
 
@@ -307,7 +307,7 @@ const sendResetPasswordMail = async(name,email,token)=>{
     from:config.emailUser,
     to:email,
     subject:'To Reset Your Password',
-    html:'<p>Hi '+name+',Please Click Here to <a href="http://127.0.0.1:3000/forget-password?token='+token+'">Reset </a> your password.</p>'
+    html:'<p>Hi '+name+',Please<a href="http://127.0.0.1:3000/forget-password?token='+token+'">  Click Here to  Reset  your password.</a></p>'
   }
   transporter.sendMail(mailOptions,function(error,info){
     if(error){
@@ -330,7 +330,7 @@ const forgetPasswordLoad=async(req,res)=>{
       res.render('users/forget-password',{user_id:tokenData._id})
 
     }else{
-      res.render('users/404',{message:"Token is Invalid"})
+      res.render('users/error',{message:"Token is Invalid"})
     }
   }catch(error){
     console.log(error.message);
@@ -2075,13 +2075,11 @@ const shopOperations = async (req, res) => {
       searchQuery,
       selectedPage,
     } = req.query;
-    // console.log(req.query, "req.query....................");
     const sortOptions = {};
     if (selectedSort === "price-low-high") {
       console.log(" (selectedSort === 'rice-low-high')");
       sortOptions["price"] = 1;
     } else if (selectedSort === "price-high-low") {
-      // console.log("ggggggggggggggggggggggg");
       sortOptions["price"] = -1;
     }
     console.log(sortOptions, "sortoptions");
@@ -2092,21 +2090,17 @@ const shopOperations = async (req, res) => {
     }
 
     if (selectedPriceRange !== "All") {
-      // console.log("lllllllllllllllllllllllllllllllll");
       const [minPrice, maxPrice] = selectedPriceRange.split("-").map(Number);
       query["price"] = { $gte: minPrice, $lte: maxPrice };
     }
 
     if (searchQuery) {
-      // console.log("llllllllllllll555555555555lllllllllllllllllll");
 
       query["productname"] = { $regex: new RegExp(searchQuery, "i") };
     }
-    console.log(query, "query ................");
     const totalCount = await Product.countDocuments(query);
     const skip = (parseInt(selectedPage) - 1) * 3;
     const limit = 3;
-    // console.log(totalCount, "total count.................");
     const products = await Product.find(query)
       .sort(sortOptions)
       .skip(skip)

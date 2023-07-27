@@ -1,0 +1,57 @@
+
+    .ti-menu:before {
+        content: "\e68e"; 
+    }
+
+    .ti-menu-alt:before {
+        content: "\e68f"; 
+    }
+
+   
+    .ti-menu-3-lines:before {
+        content: "\2261"; 
+    }
+
+     
+
+
+
+    /* Styles for the hamburger icons */
+    .navbar-toggler .navbar-toggler-icon {
+        font-size: 28px; /* Adjust the font size */
+        color: #ffff; /* Icon color */
+        border: white; /* Remove default border */
+        padding: 0; /* Remove padding */
+        background-color: black; 
+        display: inline-block; /* Make the icon inline */
+        width: 80px; /* Set a fixed width for the button */
+        height: 40px; /* Set a fixed height for the button */
+        text-align: center; /* Center the icon horizontally */
+        line-height: 30px; /* Center the icon vertically */
+    }
+
+    /* Make the lines thicker */
+    .ti-menu-3-lines:before {
+        font-weight: bold;
+    }
+
+
+
+      /* CSS for laptop size and above (e.g., hide below 992px) */
+    @media (max-width: 991px) {
+        .hide-on-small-laptop {
+            display: none;
+        }
+    }
+
+      @media (min-width: 993px) {
+        .hide-on-laptop {
+            display: none;
+        }
+    }
+
+     @media (min-width: 993px) {
+        .help-line-right {
+            margin-left: auto;
+        }
+    }

@@ -547,7 +547,7 @@ img {
     width: auto;
     height: 35px;
     padding: 0 30px;
-    background-color: #2e9163;
+    background-color: black;
     color: #fff;
     display: block;
     line-height: 35px;
@@ -557,7 +557,7 @@ img {
 
 .help-line a:hover,
 .help-line a:focus {
-    background-color: #161515;
+    background-color: crimson;
     color: #fff;
 }
 
@@ -637,7 +637,7 @@ img {
 .menu-list h6 {
     padding: 30px 15px;
     margin-bottom: 0;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #b19b9b;
 }
 
 .menu-content ul,
@@ -657,7 +657,7 @@ img {
     padding-right: 15px;
     vertical-align: middle;
     float: right;
-    color: #9f9f9f;
+    color: white;
 }
 
 .menu-content ul .sub-menu li,
@@ -689,7 +689,7 @@ img {
     position: relative;
     z-index: 1;
     text-decoration: none;
-    color: #3a3a3a;
+    color: #242121;
     height: 40px;
     display: inline-block;
     line-height: 40px;

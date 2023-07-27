@@ -1,5 +1,17 @@
 <link rel="stylesheet" href="/stylesheets/forget.css">
-
+<style>
+	  body {
+  margin: 0;
+  color: #161414;
+  background: #ffffff;
+  font: 600 16px/18px 'Open Sans', sans-serif;
+  background-image: url('/img/bg-img/signupbg.jpg');
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  
+  background-position: center; 
+}
+</style>
 
 <div class="row">
 
@@ -15,13 +27,13 @@
 					</div>
 					<div class="input-group">
 						<i class='bx bx-mail-send'></i>
-						<input type="email" name="email" placeholder=" Enter your Email" value="nandakumar@gmail.com">
+						<input type="email" name="email" placeholder=" Enter your Email" >
 
 						{{!-- <input type="email" name="email" placeholder=" Enter your Email"> --}}
 					</div>
 					<div class="input-group">
 						<i class='bx bx-mail-send'></i>
-						<input type="password" name="password" placeholder=" Enter your Password" value="123">
+						<input type="password" name="password" placeholder=" Enter your Password" >
 					</div>
 
 
@@ -34,12 +46,10 @@
 						<br>
 
 
-						{{!--
-					</div> --}}
+					
 					<a href="/signup">Don't have an account?</a>
 					<br>
 
-					{{!-- <div style="text-align: center;"> --}}
 						<a href="/otp" style="text-align: center;">OTP login</a>
 
 					</div>
@@ -51,8 +61,8 @@
 
 			</form>
 			<br>
-			{{!-- {{message}} --}}
-			<div class="message" style="color: rgb(46, 162, 75); text-align: center;">
+			
+			<div class="message" style="color: red; text-align: center;">
 				{{#if message}}
 				{{message}}
 				{{/if}}
