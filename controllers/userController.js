@@ -53,6 +53,8 @@ const securePassword =async(password)=>{
  return passwordHash;
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -86,6 +88,7 @@ const sendVerifyMail = async(name,email,user_id)=>{
   })
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
   }
 }
 
@@ -95,6 +98,8 @@ const loadSignup=async(req,res)=>{
        res.render('users/signup')
     }catch(error){
       console.log(error.message);
+      res.redirect('/error')
+
     }
 }
 
@@ -139,6 +144,8 @@ const insertUser=async(req,res)=>{
 
   }catch(error){
    console.log(error.message);
+   res.redirect('/error')
+
   }
 }
 
@@ -158,6 +165,8 @@ const mailNotification=async(req,res)=>{
      res.render('users/login')
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -171,6 +180,8 @@ const verifyMail = async(req,res)=>{
     res.render("users/email-verified")
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -182,6 +193,8 @@ const loginLoad=async(req,res)=>{
      res.render('users/login')
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -216,6 +229,8 @@ const verifyLogin=async(req,res)=>{
 
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -236,6 +251,8 @@ const is_login=req.session.user_id?true:false
   
   }catch(error){
    res.render(error.message + "rendering issue")
+   res.redirect('/error')
+
   }
 }
 
@@ -247,6 +264,8 @@ const forgetLoad = async(req,res)=>{
 
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -271,6 +290,8 @@ const forgetVerify =async(req,res)=>{
     }
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -282,6 +303,8 @@ const notifyForPassReset=async(req,res)=>{
      res.render('users/forgetPassPage')
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -318,6 +341,8 @@ const sendResetPasswordMail = async(name,email,token)=>{
   })
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -334,6 +359,8 @@ const forgetPasswordLoad=async(req,res)=>{
     }
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -348,6 +375,8 @@ const resetPassword=async(req,res)=>{
     res.redirect("/")
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -379,7 +408,13 @@ const singleProductDetails = async (req, res) => {
 
 
 const getOtp=(req,res)=>{
-  res.render('users/otp')
+  try{
+    res.render('users/otp')
+  }catch{
+    res.redirect('/error')
+
+  }
+ 
 }
 
 
@@ -420,7 +455,8 @@ if (userData) {
   res.render('users/otp', { message: "You have to signup before OTP login"  })
 }
 } catch (error) {
-throw new Error(error.message);
+// throw new Error(error.message);
+res.redirect('/error')
 }
 }
 
@@ -450,7 +486,8 @@ const verifyOtp= async (req, res) => {
           });
   } catch (error) {
 
-      throw new Error(error.message);
+      // throw new Error(error.message);
+      res.redirect('/error')
   }
 }
 
@@ -459,13 +496,20 @@ const verifyOtp= async (req, res) => {
 
 
 const gettingOtp=(req,res)=>{
-  res.render("users/otpSignup")
+  try{
+    res.render("users/otpSignup")
+  }catch{
+    res.redirect('/error')
+
+  }
+ 
 }
 
 
 
 const mobilePage = async(req,res)=>{
   try{
+    
     const userData = await User.findById({ _id: req.session.user_id});
     const productData = await Product.find({unlist:false}).lean();
     const categoryData = await categoryModel.find({unlist:false }).lean();
@@ -478,6 +522,7 @@ const mobilePage = async(req,res)=>{
     
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
   }
 }
 
@@ -497,6 +542,8 @@ const laptopPage = async(req,res)=>{
     
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -512,6 +559,8 @@ const aboutPage = async(req,res)=>{
     res.render('users/about')
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -521,6 +570,8 @@ const userLogout = async(req,res)=>{
      res.redirect('/')
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -599,6 +650,8 @@ const  addToCart= async (req, res) => {
       res.status(200).json({ message: "Product added to cart successfully" });
     } catch (error) {
       res.status(500).json({ error: error.message });
+      res.redirect('/error')
+
     }
   }
   
@@ -670,6 +723,8 @@ const getCart=async(req,res)=>{
 
   
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -751,6 +806,8 @@ const getCart=async(req,res)=>{
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: error.message });
+        res.redirect('/error')
+
     }
 };
 
@@ -783,6 +840,8 @@ const deleteProduct= async (req, res) => {
   } catch (error) {
       console.log(error);
       res.status(500).json({ error: error.message });
+      res.redirect('/error')
+
   }
 }
 
@@ -806,6 +865,8 @@ const blockUser=async(req,res)=>{
 
   }catch(error){
     console.log(error.message);
+    res.redirect('/error')
+
   }
 }
 
@@ -834,6 +895,8 @@ const profilePage = async (req, res) => {
     }
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -841,35 +904,7 @@ const profilePage = async (req, res) => {
 
 
 
-// const editUser= async (req, res) => {
-//   try {
-//       // console.log(req.file, 'userimage');
-//       const id = new mongoose.Types.ObjectId(req.session.user_id);
-//       const userData = await User.findById({ _id: id }).lean();
 
-//       if (!userData) {
-//           throw new Error('User data not found');
-//       }
-
-//       let updatedUserData = {
-//         image: userData.image,
-//           name: req.body.name,
-//           email: req.body.email,
-//            mobile: req.body.mobile,
-         
-//       };
-      
-//       if (req.file) {
-//         // Check if a new image file is uploaded
-//         updatedUserData.image = req.file.filename; // Update with the new image filename
-//     }
-
-//       const updatedUser = await User.findByIdAndUpdate({ _id: id }, { $set: updatedUserData }, { new: true });
-//       res.redirect('/profile');
-//   } catch (error) {
-//       throw new Error(error.message);
-//   }
-// }
 
 
 
@@ -927,7 +962,9 @@ const editUser = async (req, res) => {
     // Send a success message as part of the response
     res.redirect('/profile');
     } catch (error) {
-    throw new Error(error.message);
+    // throw new Error(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -969,7 +1006,9 @@ const loadAddress = async (req, res) => {
     }
   } catch (error) {
 
-    throw new Error(error.message);
+    // throw new Error(error.message);
+    res.redirect('/error')
+
   }
 
 
@@ -1030,7 +1069,9 @@ const addAddress = async (req, res) => {
 
     res.redirect('/address');
   } catch (error) {
-    throw new Error(error.message);
+    // throw new Error(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -1068,7 +1109,10 @@ const setAsDefault= async (req, res) => {
       return response
 
   } catch (error) {
+    res.redirect('/error')
       res.status(500).json({ success: false, message: 'Failed to set address as default' });
+      
+
   }
 }
 
@@ -1112,6 +1156,7 @@ const addNewAddress = async (req, res) => {
 
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
   }
 };
 
@@ -1147,7 +1192,8 @@ const deleteAddressCheckout= async (req, res) => {
       await address.save();
       res.redirect('/checkout');
   } catch (error) {
-      throw new Error(error.message);
+      // throw new Error(error.message);
+      res.redirect('/error')
   }
 }
 
@@ -1192,41 +1238,6 @@ const editAddressCheckout= async (req, res) => {
 
 
 
-// const editCheckoutAddress = async (req, res) => {
-//   try {
-//     const userId = req.session.user_id;
-//     const { _id, name, mobile, address, city, state, pincode } = req.body;
-
-//     const updatedAddress = await Address.findOneAndUpdate(
-//       { user_id: userId, 'addresses._id': _id },
-//       {
-//         $set: {
-//           'addresses.$.name': name,
-//           'addresses.$.mobile': mobile,
-//           'addresses.$.address': address,
-//           'addresses.$.city': city,
-//           'addresses.$.state': state,
-//           'addresses.$.pincode': pincode,
-//         },
-//       },
-//       { new: true }
-
-//     );
-
-//     if (updatedAddress) {
-//       // Handle success, e.g., display a success message or redirect to a success page
-//       res.redirect('/checkout');
-//     } else {
-//       // Handle failure, e.g., display an error message or redirect to an error page
-//       res.redirect('/checkout');
-//     }
-//   } catch (error) {
-//     // Handle error, e.g., display an error message or redirect to an error page
-//     res.redirect('/checkout');
-//   }
-// };
-
-
 
 
 const deleteAddress= async (req, res) => {
@@ -1260,7 +1271,8 @@ const deleteAddress= async (req, res) => {
       await address.save();
       res.redirect('/address');
   } catch (error) {
-      throw new Error(error.message);
+      // throw new Error(error.message);
+      res.redirect('/error')
   }
 }
 
@@ -1400,7 +1412,8 @@ const loadCheckout= async (req, res) => {
         }
 
   } catch (error) {
-      throw new Error(error.message);
+      // throw new Error(error.message);
+      res.redirect('/error')
   }
 }
 
@@ -1632,6 +1645,7 @@ const placeOrder = async (req, res) => {
     console.log(checkoutStatus);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
   }
 };
 
@@ -1645,6 +1659,7 @@ const orderPlaced = async (req, res) => {
       res.render('users/orderPlaced')
   } catch (error) {
       console.log(error.message);
+      res.redirect('/error')
   }
 }
 
@@ -1654,6 +1669,7 @@ const orderFailed = async (req, res) => {
       res.render('users/orderFailed')
   } catch (error) {
       console.log(error.message);
+      res.redirect('/error')
   }
 }
 
@@ -1680,6 +1696,7 @@ const verifyPayment = async (req, res) => {
               // We have set the Receipt Id is same as the orders cart collection ID
 
               res.json({ status: false });
+              res.redirect('/error')
           })
       }
   })
@@ -1706,7 +1723,8 @@ const orderDetails= async (req, res) => {
 
 
   } catch (error) {
-      throw new Error(error.message);
+      // throw new Error(error.message);
+      res.redirect('/error')
   }
 }
 
@@ -1791,7 +1809,8 @@ const loadOrdersView = async (req, res) => {
 
     });
 } catch (error) {
-    throw new Error(error);
+    // throw new Error(error);
+    res.redirect('/error')
 }
 }
 
@@ -1809,7 +1828,8 @@ const cancelOrder = async (req, res) => {
 
     res.redirect(url);
   } catch (error) {
-    console.log(error.message); 
+    console.log(error.message);
+    res.redirect('/error') 
   }
 };
 
@@ -1828,6 +1848,7 @@ const undoCancel = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message); 
+    res.redirect('/error')
   }
 };
 
@@ -1855,6 +1876,7 @@ const returnOrder = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
   }
 }
 
@@ -1885,6 +1907,7 @@ const returnReason = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
   }
 };
 
@@ -2106,7 +2129,8 @@ const shopOperations = async (req, res) => {
       products,
     });
   } catch (error) {
-    res.status(500).json({ error: "server error" });
+    res.redirect('/error')
+    // res.status(500).json({ error: "server error" });
   }
 };
 

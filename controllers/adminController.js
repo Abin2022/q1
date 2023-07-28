@@ -53,6 +53,8 @@ const loadLogin =async(req,res)=>{
         res.render('admin/login')
     }catch(error){
         console.log(error.message);
+        res.redirect('/error')
+
     }
 }
 
@@ -87,6 +89,8 @@ const verifyLogin = async(req,res)=>{
         }
     }catch(error){
         console.log(error.message);
+        res.redirect('/error')
+
     }
 }
 
@@ -125,7 +129,7 @@ const loadDashboard = async (req, res) => {
     res.render('admin/home', { totalUser,todaySales:todaySales[0] ,totalSales:totalSales[0], salesbymonth:encodeURIComponent(JSON.stringify(salesbymonth)) ,paymentMethod:encodeURIComponent(JSON.stringify(paymentMethod)),yearSales:yearSales[0],orderDetails:orderDetails })
   } catch (error) {
     console.log(error.message)
-    res.redirect('/admin/error')
+    res.redirect('/error')
   }
 }
 
@@ -140,6 +144,8 @@ const adminLogout = async(req,res)=>{
        res.redirect('admin')
     }catch(error){
       console.log(error.message);
+      res.redirect('/error')
+
     }
   }
 
@@ -158,117 +164,13 @@ const adminLogout = async(req,res)=>{
       });
     } catch (error) {
       console.log(error.message);
+      res.redirect('/error')
+
     }
   };
   
-  // const insertProducts = async (req, res) => {
-  //   try {
-  //      var arrayImage=[]
-  //     for (let i = 0; i < req.files.length; i++) {
-  //       arrayImage[i] = req.files[i].filename;
-  //     }
-      
-
-  //     const newProduct = new Product({
-  //       brand: req.body.brand,
-  //       productname: req.body.productname,
-  //       category: req.body.category,
-  //       price: req.body.price,
-  //       images: arrayImage,
-  //       inStock: req.body.stock,
-  //       // images: req.file.filename,
-  //       // images: req.files.map(file => file.filename),
-  //       description: req.body.description,
-  //     });
-  
-  //     const addProductData = await newProduct.save();
-  //     console.log(addProductData);
-  //     if (addProductData) {
-  //       await Category.updateOne(
-  //         {
-  //           category: req.body.category,
-  //         },
-  //         {
-  //           $push: { products: newProduct._id },
-  //         }
-  //       );
-  //       const updateProducts = await Product.find().lean();
-  //       const productWithSerialNumber = updateProducts.map((products, index) => ({
-  //         ...products,
-  //         serialNumber: index + 1,
-  //       }));
-  //       const categories = await Category.find().lean();
-  //       res.render("admin/add-products", {
-  //         products: productWithSerialNumber,
-  //         categories: categories,
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
 
-
-// const insertProducts = async (req, res) => {
-//   try {
-//     var arrayImage = [];
-//     for (let i = 0; i < req.files.length; i++) {
-//       const file = req.files[i];
-//       const dimensions = sizeOf(file.path);
-      
-//       // Validate image dimensions (you can adjust these values as per your requirements)
-//       const minWidth = 100;
-//       const minHeight = 100;
-//       if (dimensions.width < minWidth || dimensions.height < minHeight) {
-//         // If image dimensions don't meet the requirements, delete the file and return an error
-//         fs.unlinkSync(file.path);
-//         throw new Error(`Image at index ${i + 1} does not meet the minimum dimensions.`);
-//       }
-
-//       arrayImage[i] = file.filename;
-//     }
-
-//     // Rest of the code remains the same...
-//     const newProduct = new Product({
-//             brand: req.body.brand,
-//             productname: req.body.productname,
-//             category: req.body.category,
-//             price: req.body.price,
-//             images: arrayImage,
-//             inStock: req.body.stock,
-//             // images: req.file.filename,
-//             // images: req.files.map(file => file.filename),
-//             description: req.body.description,
-//           });
-      
-//           const addProductData = await newProduct.save();
-//           console.log(addProductData);
-//           if (addProductData) {
-//             await Category.updateOne(
-//               {
-//                 category: req.body.category,
-//               },
-//               {
-//                 $push: { products: newProduct._id },
-//               }
-//             );
-//             const updateProducts = await Product.find().lean();
-//             const productWithSerialNumber = updateProducts.map((products, index) => ({
-//               ...products,
-//               serialNumber: index + 1,
-//             }));
-//             const categories = await Category.find().lean();
-//             res.render("admin/add-products", {
-//               products: productWithSerialNumber,
-//               categories: categories,
-//             });
-//           }
-//         } catch (error) {
-//           console.log(error);
-//         }
-//       };
-    
 
 
 const insertProducts = async (req, res) => {
@@ -320,6 +222,8 @@ const insertProducts = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+    res.redirect('/error')
+
   }
 };
 
@@ -366,7 +270,9 @@ const insertProducts = async (req, res) => {
             res.redirect("/admin/products");
           }
         } catch (error) {
-          throw new Error(error.message);
+          // throw new Error(error.message);
+          res.redirect('/error')
+
         }
       };
       
@@ -422,39 +328,6 @@ const insertProducts = async (req, res) => {
 
 
 
-// const updateProduct = async (req, res) => {
-//   try {
-//     const id = req.query.id;
-//     const product = await Product.findById(id).lean();
-
-//     let updatedProductData = {
-//       brand: req.body.brand,
-//       productname: req.body.productname,
-//       inStock: req.body.stock,
-//       price: req.body.price,
-//       description: req.body.description,
-//       category: req.body.category,
-//       images: product.images,
-      
-//     };
-//     console.log(updatedProductData, "updated productsssssss");
-
-//     if (req.files && req.files.length > 0) {
-//       updatedProductData.images = req.files.map((file) => file.filename);
-//     }
-
-//     const product1 = await Product.findByIdAndUpdate(
-//       id,
-//       { $set: updatedProductData },
-//       { new: true }
-//     );
-
-//     res.redirect("/admin/add-products");
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };
-
 
 const updateProduct = async (req, res) => {
   try {
@@ -501,7 +374,9 @@ const updateProduct = async (req, res) => {
 
     res.redirect('/admin/add-products');
   } catch (error) {
-    throw new Error(error.message);
+    // throw new Error(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -520,6 +395,8 @@ const unlistProducts = async (req, res) => {
     res.redirect("/admin/add-products");
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -533,6 +410,8 @@ const listProducts = async (req, res) => {
     res.redirect("/admin/add-products");
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -558,6 +437,8 @@ const listProducts = async (req, res) => {
       });
     } catch (error) {
       console.log(error.message);
+      res.redirect('/error')
+
     }
   };
   
@@ -590,6 +471,8 @@ const listProducts = async (req, res) => {
       return res.redirect("/admin/category");
     } catch (error) {
       console.log(error.message);
+      res.redirect('/error')
+
     }
   };
  
@@ -599,7 +482,7 @@ const listProducts = async (req, res) => {
       await categoryHelpers.editingCategoryPageLoad(req,res)
     } catch (error) {
       console.log(error.message)
-      res.redirect('admin/errorPage')
+          res.redirect('/error')
     }
   }
   
@@ -608,7 +491,7 @@ const listProducts = async (req, res) => {
       await categoryHelpers.updatingCategory(req,res);
     } catch (error) {
       console.log(error.message)
-      res.redirect('admin/errorPage')
+      res.redirect('/error')
     }
   }
 
@@ -653,6 +536,8 @@ const blockedUserlist = async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -670,6 +555,8 @@ const unblockUser = async (req, res) => {
     res.redirect("/admin/unblockUser");
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -684,7 +571,9 @@ const blockedUsers= async (req, res) => {
       console.log(usersWithSerialNumber);
       res.render('admin/blocked-users', { users: usersWithSerialNumber });
   } catch (error) {
-      throw new Error(error.message);
+      // throw new Error(error.message);
+      res.redirect('/error')
+
   }
 }
 
@@ -700,6 +589,8 @@ const blockUser = async (req, res) => {
     res.redirect("/admin/user");
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -723,6 +614,8 @@ const getUserOrders = async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -781,7 +674,9 @@ const loadOrdersView=async(req,res)=>{
            cancellationStatus:cancellationStatus,
       });
   } catch (error) {
-      throw new Error(error.message);
+      // throw new Error(error.message);
+      res.redirect('/error')
+
   }
 }
 
@@ -835,6 +730,8 @@ const cancelledByAdmin = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -857,6 +754,8 @@ const rejectCancellation = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -884,6 +783,8 @@ const productDelevery = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -904,6 +805,8 @@ const deliveredProduct = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -964,6 +867,8 @@ const returnOrder = async (req, res) => {
     res.redirect(url);
   } catch (error) {
     console.log(error.message);
+    res.redirect('/error')
+
   }
 };
 
@@ -987,7 +892,7 @@ const salesofToday = async(req,res)=>{
     res.render("admin/sales-report-page", { order:todaySales.orderHistory, total:todaySales.total });
   } catch (error) {
     console.log(error.message)
-    res.redirect('admin/errorPage')
+        res.redirect('/error')
   }
 }
 
@@ -998,7 +903,7 @@ const getWeekSales = async(req,res)=>{
      res.render("admin/sales-report-page", { order:weeklySales.orderHistory, total:weeklySales.total });
   } catch (error) {
     console.log(error.message)
-    res.redirect('admin/errorPage')
+        res.redirect('/error')
   }
 }
 
@@ -1008,7 +913,7 @@ const getMonthSales = async(req,res)=>{
     res.render("admin/sales-report-page", { order:montlySales.orderHistory, total:montlySales.total });
   } catch (error) {
     console.log(error.message)
-    res.redirect('admin/errorPage')
+        res.redirect('/error')
   }
 }
 
@@ -1018,7 +923,7 @@ const getYearlySales = async(req,res)=>{
     res.render("admin/sales-report-page", { order:yearlySales.orderHistory, total:yearlySales.total });
   } catch (error) {
     console.log(error.message)
-    res.redirect('admin/errorPage')
+        res.redirect('/error')
   }
 }
 
@@ -1028,7 +933,7 @@ const salesWithDate = async(req,res)=>{
     res.render("admin/sales-report-page", { order:salesWithDate.orderHistory, total:salesWithDate.total });
   } catch (error) {
     console.log(error.message,'salesWithDate controller error')
-    res.redirect('admin/errorPage')
+        res.redirect('/error')
   }
 }
 
@@ -1037,7 +942,7 @@ const downloadSalesReport = async(req,res)=>{
     const salesPdf = await adminHelpers.salesPdf(req,res)
   } catch (error) {
     console.log(error.message,'pdfSales controller error')
-    res.redirect('admin/errorPage')
+        res.redirect('/error')
   }
 }
 

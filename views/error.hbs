@@ -124,6 +124,11 @@
       transform: scale(1);
     }
   }
+
+  .hidden {
+  display: none;
+}
+
 </style>
 
 
@@ -135,10 +140,11 @@
   <div class="card">
 
     <div class="message">
-    <h1>"Oops, something went wrong "</h1>
+    <h1>"Oops, Page Not Found "</h1>
    
     </div>
-    <h4>{{error.message}}</h4>
+  <h4 class="hidden">{{error.message}}</h4>
+
     <div class="icon">
 
     </div>

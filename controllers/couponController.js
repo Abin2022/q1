@@ -29,6 +29,7 @@ const manageCoupon = async (req, res) => {
       res.render('admin/coupon-manage', dataToRender);
     } catch (error) {
       console.log(error);
+      res.redirect('/error')
     }
   };
 
@@ -48,6 +49,7 @@ const manageCoupon = async (req, res) => {
         delete req.session.couponExistError;
     } catch (error) {
         console.log("Error from addNewCouponGET couponController :", error);
+        res.redirect('/error')
     }
 }
 
@@ -74,7 +76,6 @@ const addNewCoupon = async (req, res) => {
         });
   
         const couponAddition = await couponData.save();
-          console.log(couponExist,"couponexit value");
         res.redirect('/admin/add-coupon');
       } else {
         req.session.couponExistError = "Coupon code already exists, try some other code";
@@ -82,13 +83,13 @@ const addNewCoupon = async (req, res) => {
       }
     } catch (error) {
       console.log(error);
+      res.redirect('/error')
     }
   };
   
 
   const inactiveCouponsPage = async (req, res) => {
     try {
-        console.log("entered into disablecoupon page...............");
     //   const admin = req.session.is_admin;
       
       const adminData = await User.find({ is_admin: 1});
@@ -104,6 +105,7 @@ const addNewCoupon = async (req, res) => {
   
     } catch (error) {
       console.log(error.message);
+      res.redirect('/error')
     }
   };
 
@@ -132,6 +134,7 @@ const addNewCoupon = async (req, res) => {
       delete req.session.couponExistError;
     } catch (error) {
       console.log("Error from editCouponPOST couponController:", error);
+      res.redirect('/error')
     }
   };
   
@@ -176,6 +179,7 @@ const addNewCoupon = async (req, res) => {
       }
     } catch (error) {
       console.log("Error from updateCouponPOST couponController:", error);
+      res.redirect('/error')
     }
   };
   
@@ -205,6 +209,7 @@ const addNewCoupon = async (req, res) => {
   
     } catch (error) {
       console.log("Error from changeCouponStatusPOST couponController:", error);
+      res.redirect('/error')
     }
   };
   
@@ -257,6 +262,7 @@ const addNewCoupon = async (req, res) => {
 
   } catch (error) {
       console.log("Error-3 from changeCouponStatusPOST couponController :", error);
+      res.redirect('/error')
   }
 }
 
