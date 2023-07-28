@@ -767,7 +767,7 @@ const deleteProduct= async (req, res) => {
       );
 
       if (cart) {
-          console.log(cart, 'updated cart');
+          // console.log(cart, 'updated cart');
 
           // Product successfully removed from the cart
           const response = { deleteProductFromCart: true };
@@ -776,7 +776,7 @@ const deleteProduct= async (req, res) => {
       } else {
           // Cart or product not found
           const response = { deleteProductFromCart: false };
-          console.log(response, 'response from userhelper');
+          // console.log(response, 'response from userhelper');
           return response;
       }
 
@@ -1552,7 +1552,7 @@ const verifyWalletRecharge = async(req,res)=>{
           
           const razorpayAmount=parseInt(req.body['serverOrderDetails[razorpayResponse][amount]'])
           const amount=parseInt(razorpayAmount/100)
-          userHelpers. rechargeUpdateWallet(req.body['serverOrderDetails[razorpayResponse][receipt]'],amount).then(()=>{
+          userHelpers.rechargeUpdateWallet(req.body['serverOrderDetails[razorpayResponse][receipt]'],amount).then(()=>{
               res.json({ status: true });
           })
           

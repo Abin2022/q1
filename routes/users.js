@@ -108,7 +108,6 @@ router.get('/cart',auth.isLogin,userControllers.getCart)
 router.post('/change-product-quantity',userControllers.changeQuantity)
 // router.post('/delete-product-from-cart',userControllers.deleteProduct)
 
-
 router.post('/apply-coupon', couponController.applyCouponOnUserside);
 
 router.get('/block',userControllers.blockUser)

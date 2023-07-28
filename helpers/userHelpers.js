@@ -240,33 +240,6 @@ walletBalance: (userId) => {
 
 
 
-//    updateWallet:(userId,orderId)=>{
-//     return new Promise(async(resolve,reject)=>{
-//         try{
-//             const orderDetails=await Order.findOne({_id:orderId})
-//             const wallet=await Wallet.findOne({userId:userId })
-
-//             if(wallet){
-//                 const updatedWalletAmount = wallet.walletAmount - orderDetails.orderValue;
-
-//                 await Wallet.findOneAndUpdate(
-//                     { userId:userId},
-//                     { walletAmount: updatedWalletAmount}
-//                 );
-//                 resolve(updatedWalletAmount)
-//             } else {
-
-//                 reject('Wallet is not found')
-//             }
-//             }catch(error){
-//                 reject(error)
-//             }
-        
-//     })
-//    },
-
-
-
 
 updateWallet: (userId, orderId) => {
     return new Promise(async (resolve, reject) => {
@@ -360,32 +333,101 @@ updateWallet: (userId, orderId) => {
         }
     })
 },
-
-rechargeUpdateWallet:(userId, referalAmount)=>{
-    return new Promise(async(resolve,reject)=>{
-        try {
-            
-            const wallet  = await Wallet.findOne({userId:new ObjectId(userId)}).lean().exec()
-            
-            if(wallet){
-                const currentAmount = wallet.walletAmount
-                const updatedAmount = currentAmount + referalAmount;
-
-               
+//  rechargeUpdateWallet:(userId, referalAmount)=>{
+//         return new Promise(async(resolve,reject)=>{
+//             try {
                 
-               const walletUpdate = await Wallet.updateOne({userId:new ObjectId(userId)},{ $set: { walletAmount: updatedAmount } })
+//                 const wallet  = await Wallet.findOne({userId:new ObjectId(userId)}).lean().exec()
+                
+//                 if(wallet){
+//                     const currentAmount = wallet.walletAmount
+//                     const updatedAmount = currentAmount + referalAmount;
+
+                   
+                    
+//                    const walletUpdate = await Wallet.updateOne({userId:new ObjectId(userId)},{ $set: { walletAmount: updatedAmount } })
 
 
-                resolve()
-            }else{
-                reject(new Error('Wallet not found'));
-            }
+//                     resolve()
+//                 }else{
+//                     reject(new Error('Wallet not found'));
+//                 }
+//             } catch (error) {
+//                 reject(error);
+//             }
+//         })
+//     },
+
+
+
+
+
+
+
+// Updated rechargeUpdateWallet function
+ rechargeUpdateWallet :(userId, referralAmount) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const wallet = await Wallet.findOne({ userId: new ObjectId(userId) }).lean().exec();
+
+      if (wallet) {
+        const currentAmount = wallet.walletAmount;
+        const updatedAmount = currentAmount + referralAmount;
+
+        await Wallet.updateOne({ userId: new ObjectId(userId) }, { $set: { walletAmount: updatedAmount } });
+
+        resolve();
+      } else {
+        // If the wallet is not found, create a new wallet and then proceed with updating
+        try {
+          const newWallet = await createWallet(userId);
+
+          // Proceed with updating the wallet amount after creating the new wallet
+          const currentAmount = newWallet.walletAmount;
+          const updatedAmount = currentAmount + referralAmount;
+          await Wallet.updateOne({ userId: new ObjectId(userId) }, { $set: { walletAmount: updatedAmount } });
+
+          resolve();
         } catch (error) {
-            reject(error);
+          reject(error);
         }
-    })
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
 },
 
 
 
+
+
+
+
+
+
+
+
+
 }
+
+
+
+// Function to create a new wallet for a user
+const createWallet = (userId) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // Create a new wallet document with initial wallet amount (e.g., 0)
+        const newWallet = new Wallet({
+          userId: new ObjectId(userId),
+          walletAmount: 0,
+        });
+  
+        // Save the new wallet document to the database
+        const savedWallet = await newWallet.save();
+        resolve(savedWallet);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
