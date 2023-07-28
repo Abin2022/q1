@@ -211,12 +211,12 @@
     {{!--
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/themify-icons.css"> --}}
-    <link rel ="stylesheet" href="/stylesheets/mainatin.css">
+    <link rel="stylesheet" href="/stylesheets/mainatin.css">
 
 </head>
 
 <body>
-  
+
 
 
     <div id="wrapper">
@@ -237,7 +237,7 @@
                                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                                     data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false"
                                     aria-label="Toggle navigation"><span class="navbar-toggler-icon">
-                                         <i class="ti-menu-3-lines"></i>
+                                        <i class="ti-menu-3-lines"></i>
                                     </span></button>
                                 <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                     <ul class="navbar-nav animated" id="nav">
@@ -251,15 +251,15 @@
                                                     class="ti-bag"></i> </a>
                                         <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
 
-                                          {{#if is_login}}
-                        <div class="help-line hide-on-laptop">
-                            <a href="/logout">LOGOUT</a>
-                        </div>
-                        {{else}}
-                        <div class="help-line hide-on-laptop">
-                            <a href="/logout">LOGOUT</a>
-                        </div>
-                        {{/if}}
+                                        {{#if is_login}}
+                                        <div class="help-line hide-on-laptop">
+                                            <a href="/logout">LOGOUT</a>
+                                        </div>
+                                        {{else}}
+                                        <div class="help-line hide-on-laptop">
+                                            <a href="/logout">LOGOUT</a>
+                                        </div>
+                                        {{/if}}
                                     </ul>
                                 </div>
                             </nav>
@@ -418,25 +418,28 @@
                             {{else if (eq cancellationStatus "cancelled")}}
                             {{else if (eq cancellationStatus "Delivered")}}
 
-                          
+
 
                             {{#if this.isLessThan14DaysOld}}
-                            <button type="button" class="btn btn-danger btn-sm" onclick="showReturnConfirmationModal('{{orderId}}')">Return</button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                onclick="showReturnConfirmationModal('{{orderId}}')">Return</button>
 
                             {{else}}
-                            <button type="button" class="btn btn-danger btn-sm" >Return time over</button>
+                            <button type="button" class="btn btn-danger btn-sm">Return time over</button>
                             {{/if}}
 
 
-                             {{!-- {{else if(eq cancellationStatus "Return Procedure")}}
-                            <button type="button" class="btn btn-danger btn-sm" onclick="showConfirmationModal('{{orderId}}')">Return</button> --}}
+                            {{!-- {{else if(eq cancellationStatus "Return Procedure")}}
+                            <button type="button" class="btn btn-danger btn-sm"
+                                onclick="showConfirmationModal('{{orderId}}')">Return</button> --}}
 
-                          
-  
-    
+
+
+
 
                             {{else if (eq cancellationStatus "Return Procedure")}}
-                        <button type="button" class="btn btn-danger btn-sm" onclick="showConfirmationModal('{{orderId}}')">Return Confirm</button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                onclick="showConfirmationModal('{{orderId}}')">Return Confirm</button>
 
 
                             {{else if (eq cancellationStatus "Return Processing")}}
@@ -616,51 +619,52 @@
 
 
 
-<!-- Return Modal -->
-<!-- Updated Return Confirmation Modal -->
-<div class="modal" id="returnConfirmationModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Return Confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to initiate a return for this order?</p>
-                <label for="returnReason">Select Reason for Return:</label>
-                <select id="returnReason" class="form-control">
-                    <option value="damaged">Damaged Product</option>
-                    <option value="wrong_item">Received Wrong Item</option>
-                    <option value="not_satisfied">Not Satisfied with the Product</option>
-                    <!-- Add more predefined reasons here -->
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <!-- Form submission to handle return reason -->
-                 {{!-- <form action="/return-order" method="post">--}}
-                <form action="/return-reason" method="post">
-                
-                    <input type="hidden" name="orderId" value="{{orderId}}">
-                    <input type="hidden" id="selectedReturnReason" name="returnReason" value="">
-                    <button type="button" class="btn btn-danger" id="confirmReturnBtn"  >Submit Reason</button>
-                </form>
+        <!-- Return Modal -->
+        <!-- Updated Return Confirmation Modal -->
+        <div class="modal" id="returnConfirmationModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Return Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to initiate a return for this order?</p>
+                        <label for="returnReason">Select Reason for Return:</label>
+                        <select id="returnReason" class="form-control">
+                            <option value="damaged">Damaged Product</option>
+                            <option value="wrong_item">Received Wrong Item</option>
+                            <option value="not_satisfied">Not Satisfied with the Product</option>
+                            <!-- Add more predefined reasons here -->
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <!-- Form submission to handle return reason -->
+                        {{!-- <form action="/return-order" method="post">--}}
+                            <form action="/return-reason" method="post">
+
+                                <input type="hidden" name="orderId" value="{{orderId}}">
+                                <input type="hidden" id="selectedReturnReason" name="returnReason" value="">
+                                <button type="button" class="btn btn-danger" id="confirmReturnBtn">Submit
+                                    Reason</button>
+                            </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Script to handle form submission -->
-<script>
-    document.getElementById("confirmReturnBtn").addEventListener("click", function () {
-        const selectedReturnReason = document.getElementById("returnReason").value;
-        document.getElementById("selectedReturnReason").value = selectedReturnReason;
-        // Submit the form when the button is clicked
-        this.closest("form").submit();
-    });
-</script>
+        <!-- Script to handle form submission -->
+        <script>
+            document.getElementById("confirmReturnBtn").addEventListener("click", function () {
+                const selectedReturnReason = document.getElementById("returnReason").value;
+                document.getElementById("selectedReturnReason").value = selectedReturnReason;
+                // Submit the form when the button is clicked
+                this.closest("form").submit();
+            });
+        </script>
 
 
 
@@ -706,8 +710,8 @@
             }
         </script>
 
-        
-         <script>
+
+        <script>
             function showConfirmationModal(orderId) {
                 var confirmReturnlBtn = document.getElementById("confirmReturning");
                 confirmReturnlBtn.value = orderId;
@@ -716,8 +720,8 @@
             }
         </script>
 
-        
- 
+
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 

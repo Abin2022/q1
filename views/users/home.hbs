@@ -58,15 +58,7 @@
     {{!--
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/themify-icons.css"> --}}
-    <link rel ="stylesheet" href="/stylesheets/mainatin.css"
-
-
-
-
-
-
-
-</head>
+    <link rel="stylesheet" href="/stylesheets/mainatin.css" </head>
 
 <body>
 
@@ -91,7 +83,7 @@
                                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                                     data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false"
                                     aria-label="Toggle navigation"><span class="navbar-toggler-icon">
-                                         <i class="ti-menu-3-lines"></i>
+                                        <i class="ti-menu-3-lines"></i>
                                     </span></button>
                                 <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                     <ul class="navbar-nav animated" id="nav">
@@ -105,15 +97,15 @@
                                                     class="ti-bag"></i> </a>
                                         <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
 
-                                          {{#if is_login}}
-                        <div class="help-line hide-on-laptop">
-                            <a href="/logout">LOGOUT</a>
-                        </div>
-                        {{else}}
-                        <div class="help-line hide-on-laptop">
-                            <a href="/login">LOGIN</a>
-                        </div>
-                        {{/if}}
+                                        {{#if is_login}}
+                                        <div class="help-line hide-on-laptop">
+                                            <a href="/logout">LOGOUT</a>
+                                        </div>
+                                        {{else}}
+                                        <div class="help-line hide-on-laptop">
+                                            <a href="/login">LOGIN</a>
+                                        </div>
+                                        {{/if}}
                                     </ul>
                                 </div>
                             </nav>
@@ -188,7 +180,7 @@
                 <div class="catagory-content">
                     <h6>On Accesories</h6>
                     <h2>Sale 30%</h2>
-                    <a href="/shop" class="btn karl-btn">SHOP NOW</a>
+                    <a href="/shop-page" class="btn karl-btn">SHOP NOW</a>
                 </div>
             </div>
             <!-- Single Catagory -->
@@ -197,7 +189,7 @@
                 <div class="catagory-content">
                     <h6>This is the latest Collection of OnePlus </h6>
                     <h2>New Series</h2>
-                    <a href="/shop" class="btn karl-btn">SHOP NOW</a>
+                    <a href="/shop-page" class="btn karl-btn">SHOP NOW</a>
                 </div>
             </div>
         </section>
@@ -353,7 +345,7 @@
                                 <li><a href="/orders">Shipping</a></li>
                                 <li><a href="/profile">Our Policies</a></li>
                                 <li><a href="/profile">Afiliates</a></li>
-                               <li><a href="/wallet-details">Balance</a></li> 
+                                <li><a href="/wallet-details">Balance</a></li>
                             </ul>
                         </div>
                     </div>
@@ -398,35 +390,59 @@
 
 
 
-        <script>
-                            function addToCart(productId, event) {
-                                event.preventDefault(); // Prevent the default behavior of the <a> tag
 
-                                    // Send an AJAX request to the server
-                                    const xhr = new XMLHttpRequest();
+
+
+
+
+
+        <script>
+
+
+
+
+
+
+
+
+                                function addToCart(productId, event) {
+                                    event.preventDefault(); // Prevent the default behavior of the <a> tag
+
+
+
+                                        // Check if the user is logged in (assuming you have a variable isLogin that represents this)
+                                        const is_login = {{ is_login }}; // Replace this with your logic to check if the user is logged in
+
+                                    if (!is_login) {
+                                        // User is not logged in, show the login alert
+                                        showLoginAlert();
+                                             } else {
+                                        // Send an AJAX request to the server
+                                        const xhr = new XMLHttpRequest();
                                     xhr.open('POST', '/addtocart', true);
                                     xhr.setRequestHeader('Content-Type', 'application/json');
                                     xhr.onreadystatechange = function () {
                                    if (xhr.readyState === 4){ 
                                     if(xhr.status === 200) {
-                                    // Handle the server response here (if needed)
-                                    showSuccessAlert();
+                                        // Handle the server response here (if needed)
+                                        showSuccessAlert();
                                      } else if (xhr.status === 400) {
-                                    console.log('status is 400 ')
+                                        console.log('status is 400 ')
                                        // Product is out of stock
                                          showOutOfStock() 
                                      } else {
-                                    // Other server errors
-                                    swal("Error", "An error occurred while adding the product to cart.", "error");
+                                        // Other server errors
+                                        swal("Error", "An error occurred while adding the product to cart.", "error");
       }
     }
   };
-                                xhr.onerror = function() {
-                                    console.log("Request error");
+                                    xhr.onerror = function() {
+                                        console.log("Request error");
   
   };
-                                xhr.send(JSON.stringify({productId: productId }));
+                                    xhr.send(JSON.stringify({productId: productId }));
 }
+                                }
         </script>
 
 
@@ -434,63 +450,95 @@
 
 
         <script>
-                                function showSweetAlert() {
-                                    Swal.fire({
-                                        title: "Success",
-                                        text: "Product added to cart!",
-                                        icon: "success",
-                                        showCancelButton: false,
-                                        confirmButtonColor: "#FF0000",
-                                        confirmButtonText: "OK",
-                                        customClass: {
-                                            container: "swal-container",
-                                            title: "swal-title",
-                                            content: "swal-text",
-                                            confirmButton: "swal-button"
-                                        },
-                                        onOpen: () => {
-                                            // Set the text color to white
-                                            const swalContainer = document.querySelector(".swal-container");
-                                            swalContainer.style.color = "white";
+                                    function showSweetAlert() {
+                                        Swal.fire({
+                                            title: "Success",
+                                            text: "Product added to cart!",
+                                            icon: "success",
+                                            showCancelButton: false,
+                                            confirmButtonColor: "#FF0000",
+                                            confirmButtonText: "OK",
+                                            customClass: {
+                                                container: "swal-container",
+                                                title: "swal-title",
+                                                content: "swal-text",
+                                                confirmButton: "swal-button"
+                                            },
+                                            onOpen: () => {
+                                                // Set the text color to white
+                                                const swalContainer = document.querySelector(".swal-container");
+                                                swalContainer.style.color = "white";
 
-                                            // Remove the border from the OK button
-                                            const okButton = document.querySelector(".swal-button");
-                                            okButton.style.border = "none";
-                                        }
-                                    });
+                                                // Remove the border from the OK button
+                                                const okButton = document.querySelector(".swal-button");
+                                                okButton.style.border = "none";
+                                            }
+                                        });
                                 }
 
+        </script>
+        <script>
 
+                                    function showOutOfStock() {
+                                        Swal.fire({
+                                            title: "Out of Stock",
+                                            text: "This product is currently out of stock.",
+                                            icon: "error",
+                                            showCancelButton: false,
+                                            confirmButtonColor: "#000000",
+                                            confirmButtonText: "OK",
+                                            customClass: {
+                                                container: "swal-container",
+                                                title: "swal-title",
+                                                text: "swal-text",
+                                                confirmButton: "swal-button"
+                                            },
+                                            onOpen: () => {
+                                                // Set the text color to white
+                                                const swalContainer = document.querySelector(".swal-container");
+                                                swalContainer.style.color = "white";
 
-                                function showOutOfStock() {
-                                    Swal.fire({
-                                        title: "Out of Stock",
-                                        text: "This product is currently out of stock.",
-                                        icon: "error",
-                                        showCancelButton: false,
-                                        confirmButtonColor: "#000000",
-                                        confirmButtonText: "OK",
-                                        customClass: {
-                                            container: "swal-container",
-                                            title: "swal-title",
-                                            text: "swal-text",
-                                            confirmButton: "swal-button"
-                                        },
-                                        onOpen: () => {
-                                            // Set the text color to white
-                                            const swalContainer = document.querySelector(".swal-container");
-                                            swalContainer.style.color = "white";
-
-                                            // Remove the border from the OK button
-                                            const okButton = document.querySelector(".swal-button");
-                                            okButton.style.border = "none";
-                                        }
-                                    });
+                                                // Remove the border from the OK button
+                                                const okButton = document.querySelector(".swal-button");
+                                                okButton.style.border = "none";
+                                            }
+                                        });
 }
 
 
         </script>
 
+
+
+        <script>
+
+                                    function showLoginAlert() {
+                                        Swal.fire({
+                                            title: "Login Required",
+                                            text: "You need to login to add products to the cart.",
+                                            icon: "warning",
+                                            showCancelButton: false,
+                                            confirmButtonColor: "#ffbf00",
+                                            confirmButtonText: "OK",
+                                            customClass: {
+                                                container: "swal-container",
+                                                title: "swal-title",
+                                                content: "swal-text",
+                                                confirmButton: "swal-button"
+                                            },
+                                            onOpen: () => {
+                                                // Set the text color to white
+                                                const swalContainer = document.querySelector(".swal-container");
+                                                swalContainer.style.color = "white";
+
+                                                // Remove the border from the OK button
+                                                const okButton = document.querySelector(".swal-button");
+                                                okButton.style.border = "none";
+                                            }
+                                        });
+  }
+
+        </script>
 
 
 

@@ -907,59 +907,6 @@ const deliveredProduct = async (req, res) => {
   }
 };
 
-// const returnOrder = async (req, res) => {
-//   try {
-//     const orderId = req.body.orderId;
-//     const returnReason = req.body.returnReason; // Get the return reason from the request body
-//     const url = "/admin/ordersView?id=" + orderId;
-    
-//     const updateData = {
-//       $set: {
-//         orderStatus: "Returned",
-//         cancellationStatus: "Returned",
-//         returnOrder: true,
-//       },
-//     };
-
-//     if (returnReason === "damaged") {
-//       // If the return reason is "damaged," skip stock updation
-//       delete updateData.$set.returnOrder; // Remove the returnOrder key from the update data
-//     }
-
-//     const updatedOrder = await Order.findByIdAndUpdate({ _id: new ObjectId(orderId) }, updateData, { new: true }).exec();
-
-//     const wallet = await Wallet.findOne({ userId: updatedOrder.userId }).exec();
-
-//     if (wallet) {
-//       const updatedWallet = await Wallet.findOneAndUpdate(
-//         { userId: updatedOrder.userId },
-//         { $inc: { walletAmount: updatedOrder.orderValue } },
-//         { new: true }
-//       ).exec();
-//     } else {
-//       const newWallet = new Wallet({
-//         userId: updatedOrder.userId,
-//         walletAmount: updatedOrder.orderValue,
-//       });
-//       const createdWallet = await newWallet.save();
-//     }
-
-//     // Stock updation only when return reason is not "damaged"
-//     if (returnReason !== "damaged") {
-//       const productsInOrder = updatedOrder.products;
-//       // Iterate over the products and add them back to the stock
-//       for (const product of productsInOrder) {
-//         const productId = product.productId;
-//         const quantity = product.quantity;
-//         await Product.findByIdAndUpdate(productId, { $inc: { inStock: quantity } });
-//       }
-//     }
-
-//     res.redirect(url);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
 
 
 const returnOrder = async (req, res) => {

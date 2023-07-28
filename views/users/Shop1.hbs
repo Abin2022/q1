@@ -97,6 +97,9 @@
       max-width: 100%;
       object-fit: cover; /* or 'contain' if you want the whole image to be visible */
     }
+    .custom-control-label {
+  margin-left: 8px; /* Adjust the value as per your preferred space */
+}
   </style>
   
 
@@ -205,8 +208,8 @@
                     <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
                     <form>
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                            <input type="radio" class="custom-control-input" checked id="price-all" name="price-filter" value="All">
-                            <label class="custom-control-label" for="price-all">All Price</label>
+                            <input type="radio"       class="custom-control-input" checked id="price-all" name="price-filter" value="All">
+                            <label  class="custom-control-label"  for="price-all">All Price</label>
                         </div>
                         <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" class="custom-control-input" id="price-1" name="price-filter" value="10000-20000 ">
@@ -259,7 +262,7 @@
             </div>
             <!-- Shop Sidebar End -->
 
-
+    
             <!-- Shop Product Start -->
             <div class="col-lg-9 col-md-6 col">
                 <div class="row pb-3 ">

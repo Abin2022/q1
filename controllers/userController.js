@@ -75,7 +75,7 @@ const sendVerifyMail = async(name,email,user_id)=>{
     from:config.emailUser,
     to:email,
     subject:'For Verification Purpose....',
-    html:'<p>Hi '+name+',Please Click Here to <a href="http://127.0.0.1:3000/verify?id='+user_id+'">verify</a> your mail.</p>'
+    html:'<p>Hi '+name+',Please Click Here to <a href="www.abinbinu.com/verify?id='+user_id+'">verify</a> your mail.</p>'
   }
   transporter.sendMail(mailOptions,function(error,info){
     if(error){
@@ -307,7 +307,7 @@ const sendResetPasswordMail = async(name,email,token)=>{
     from:config.emailUser,
     to:email,
     subject:'To Reset Your Password',
-    html:'<p>Hi '+name+',Please<a href="http://127.0.0.1:3000/forget-password?token='+token+'">  Click Here to  Reset  your password.</a></p>'
+    html:'<p>Hi '+name+',Please<a href="www.abinbinu.com/forget-password?token='+token+'">  Click Here to  Reset  your password.</a></p>'
   }
   transporter.sendMail(mailOptions,function(error,info){
     if(error){
@@ -1897,14 +1897,7 @@ const returnReason = async (req, res) => {
 
 
 
-// const downloadInvoice =async(req,res)=>{
-//   try {
-//     const salesPdf = await userHelpers.invoicePdf(req,res)
-//   } catch (error) {
-//     console.log(error.message,'pdfinvoice controller error')
-//     res.redirect('/users/error')
-//   }
-// }
+
 
 
 
@@ -2052,7 +2045,6 @@ const downloadInvoice= async (req, res) => {
 const loadShopPage = async (req, res) => {
   try {
     const products = await Product.find().lean();
-    console.log(products, "products");
     res.render("users/Shop1", {
      
 
@@ -2077,15 +2069,15 @@ const shopOperations = async (req, res) => {
     } = req.query;
     const sortOptions = {};
     if (selectedSort === "price-low-high") {
-      console.log(" (selectedSort === 'rice-low-high')");
+      // console.log(" (selectedSort === 'rice-low-high')");
       sortOptions["price"] = 1;
     } else if (selectedSort === "price-high-low") {
       sortOptions["price"] = -1;
     }
-    console.log(sortOptions, "sortoptions");
+    // console.log(sortOptions, "sortoptions");
     let query = {};
     if (selectedCategory !== "all category") {
-      console.log("selesytses all brands");
+      // console.log("selesytses all brands");
       query["category"] = selectedCategory;
     }
 
@@ -2106,7 +2098,7 @@ const shopOperations = async (req, res) => {
       .skip(skip)
       .limit(limit);
 
-    console.log(products);
+    // console.log(products);
     res.json({
       totalProducts: totalCount,
       currentPage: parseInt(selectedPage),

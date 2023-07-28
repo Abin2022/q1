@@ -786,7 +786,6 @@
 
             e.preventDefault(); // To prevent default method of submitting form as here Ajax should be used here to submit the form based on the two different payment methods
 
-            console.log("Checkout Button Ajax call");
 
             $.ajax({
 
@@ -803,7 +802,11 @@
                     } else if(response.WALLET_CHECKOUT){
                         location.href = '/wallet-placed?id='+response.orderId
                     }else if(response.error){
+                        if(response.error === "Insufficient balance."){
+                       location.href = '/orderFailed';
+                        }else{
                          $('#error-message').text(response.error);
+                        }
                     }
                     else if (response.ONLINE_CHECKOUT) {
                         makeRazorpayPayment(response);

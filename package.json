@@ -1,5 +1,5 @@
 {
-  "name": "namo-project",
+  "name": "nexo-project",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -36,5 +36,6 @@
     "razorpay": "^2.9.1",
     "sharp": "^0.32.4",
     "twilio": "^4.12.0"
+   
   }
 }

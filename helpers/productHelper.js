@@ -31,6 +31,7 @@ module.exports = {
       if (products) {
         resovle(products);
       } else {
+        // res.redirect('/error')
         resovle(false);
       }
     });

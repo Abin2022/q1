@@ -1,261 +1,199 @@
 
 
+
+
+
+
 <style>
-  .blocked-container {
+
+    body {
+  margin: 0;
+  color: #d22111;
+  background: #ffffff;
+  font: 600 16px/18px 'Open Sans', sans-serif;
+  background-image: url('/img/bg-img/signupbg.jpg');
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  
+  background-position: center; 
+}
+
+  .card {
+    width: 50%;
+    max-width: 655px;
+    padding: 30px;
+
+    border: 1px solid #ccc;
+    border-radius: 137px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
+    height: 313px;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
-    text-align: center;
-    padding-top: 20vh; /* Adjust the value as needed */
+    justify-content: center;
+    box-shadow: inset 0 0 6px rgba(0, 0, 1, 0.30);
   }
+
+
+
+  .message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    size-adjust: calc();
+    color: green;
+  }
+
+  .message {
+    
+    font-size: 15px;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: celebration;
+    animation-timing-function: ease-in-out;
+    /* Add easing for smooth zoom effect */
+  }
+
+  .icon {
+    font-size: 48px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: green;
+    /* Set the icon color to green */
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .row a {
+    flex: 1;
+    min-width: 0;
+    margin: 0 5px;
+  }
+
+  .buttons a {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-dark {
+    background-color: #343a40;
+  }
+
+  .btn-dark:hover {
+    background-color: #23272b;
+  }
+
+  .btn-warning {
+    background-color: #ffc107;
+  }
+
+  .btn-warning:hover {
+    background-color: #e0a800;
+  }
+
+  @keyframes celebration {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
+  /* Add your preferred colors and styles here */
+.attractive-button {
+  background-color: #47494b; /* Blue color, change to your preferred color */
+  color: #fff; /* White text, change to your preferred text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.attractive-button:hover {
+  background-color: crimson; /* Darker shade on hover, change to your preferred color */
+}
+
 </style>
 
 
 
-  
-
- {{!-- from Home page --}}
-
- <link rel="icon" href="img/core-img/favicon.ico">
-
-    <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css">
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Responsive CSS -->
-    <link href="css/responsive.css" rel="stylesheet">
-
-
- {{!-- stylesheet section link --}}
-  <link rel="stylesheet" href="/stylesheets/core-style.css">
-  <link rel="stylesheet" href="/stylesheets/animate.css">
- 
-  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-  {{!-- <link rel="stylesheet" href="/stylesheets/font-awesome.min.css"> --}}
-  <link rel="stylesheet" href="/stylesheets/bootstrap.min1.css">
-   
-  {{!-- <link rel="stylesheet" href="/stylesheets/forget.css"> --}}
-  {{!-- <link rel="stylesheet" href="/stylesheets/jquery-ui.min.css"> --}}
-   
-  {{!-- <link rel="stylesheet" href="/stylesheets/login.css"> --}}
-  <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
-   
-  <link rel="stylesheet" href="/stylesheets/nouislider.css">
-  <link rel="stylesheet" href="/stylesheets/owl.carousel.css">
-   <link rel="stylesheet" href="/stylesheets/responsive.css">
-    {{!-- <link rel="stylesheet" href="/stylesheets/style.css"> 
-  <link rel="stylesheet" href="/stylesheets/themify-icons.css">  --}}
-
-
-    <link rel ="stylesheet" href="/stylesheets/mainatin.css">
 
 
 
+<div class="message-container">
+  <div class="card">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-<div id="wrapper">
-
-        <!-- Top Header Area End -->
-        <div class="main_header_area">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-12 d-md-flex justify-content-between">
-                        <!-- Header Social Area -->
-                        <div class="header-social-area">
-                            <a href="#"><img src="img/logo/1.png" style="width:150px; height:80px;" alt="Nexo"></a>
-                        </div>
-                        <!-- Menu Area -->
-                        <div class="main-menu-area">
-                            <nav class="navbar navbar-expand-lg align-items-start">
-
-                                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false"
-                                    aria-label="Toggle navigation"><span class="navbar-toggler-icon">
-                                         <i class="ti-menu-3-lines"></i>
-                                    </span></button>
-                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
-                                    <ul class="navbar-nav animated" id="nav">
-                                        <li class="nav-item active"><a class="nav-link" href="/home"> Home</a></li>
-                                        <li class="nav-item dropdown">
-                                        <li class="nav-item active"><a class="nav-link" href="/mobile">Mobiles</a></li>
-                                        <li class="nav-item active"><a class="nav-link" href="/laptop"> Laptops</a></li>
-                                        <li class="nav-item active"><a class="nav-link" href="/shop-page">SHOP</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/order-details">Orders</a></li>
-                                        <li class="nav-item active"><a class="nav-link" href="/cart">Cart<i
-                                                    class="ti-bag"></i> </a>
-                                        <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
-
-                                          {{#if is_login}}
-                        <div class="help-line hide-on-laptop">
-                            <a href="/logout">LOGOUT</a>
-                        </div>
-                        {{else}}
-                        <div class="help-line hide-on-laptop">
-                            <a href="/logout">LOGOUT</a>
-                        </div>
-                        {{/if}}
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                        <!-- Help Line -->
-                        {{#if is_login}}
-                        <div class="help-line hide-on-small-laptop">
-                            <a href="/logout">LOGOUT</a>
-                        </div>
-                        {{else}}
-                        <div class="help-line hide-on-small-laptop">
-                            <a href="/logout">LOGOUT</a>
-                        </div>
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-        </div>
-        </header>
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        <!-- ****** Top Discount Area Start ****** -->
-        <section class="top-discount-area d-md-flex align-items-center">
-            <!-- Single Discount Area -->
-              
-            <div class="single-discount-area">
-                <h5>Free Shipping &amp; Returns</h5>
-                {{!-- <h6><a href="#">BUY NOW</a></h6> --}}
-            </div>
-            <!-- Single Discount Area -->
-            <div class="single-discount-area">
-                <h5>15% Discount for all Products</h5>
-                {{!-- <h6>USE CODE: Colorlib</h6> --}}
-            </div>
-            <!-- Single Discount Area -->
-            <div class="single-discount-area">
-                <h5>Flat ₹2,000 Instant Discount with Online-Payment</h5>
-                {{!-- <h6>USE CODE: Colorlib</h6> --}}
-            </div>
-              
-        </section>
-        <!-- ****** Top Discount Area End ****** -->
-  <div class="blocked-container">
-    <h1>"You order has been placed sucessfully"</h1>
-    {{!-- <p>Need help? Contact the administrator:</p>
-    <p>Email: <a href="mailto:tomailadmin@gmail.com">tomailadmin@gmail.com</a></p> --}}
-    <br>
-   <a class="btn btn-warning btn-lg" href="/order-details">View Orders</a>
-   <br>
+    <div class="message">
+    <h1>"ORDER PLACED"</h1>
     
+   
+    </div>
+    <br>
+    <br>
+<button class="attractive-button" onclick="window.location.href='/order-details'">View Your Order</button>
+    <br>
+    <h4>{{error.message}}</h4>
 
-    <a href="/home">Go to Home page</a>
+    <div class="icon">
 
+    </div>
   </div>
 
-  {{!-- footer section from home page --}}
-        <footer class="footer_area">
-            <div class="container">
-                <div class="row">
-                    <!-- Single Footer Area Start -->
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="single_footer_area">
-                            <div class="footer-logo">
-                                {{!-- <ul>Hi,there we are</ul> --}}
-                                <img src="img/core-img/logo.png" alt="" >                     
-                                
-                            </div>
-                            {{!-- <div class="copywrite_text d-flex align-items-center">
-                                <p>WE the Nexo Group are the top selling Platform in lead online selling sites, almost all Countries</p>
-                            </div> --}}
-                        </div>
-                    </div>
 
-                    <!-- Single Footer Area Start -->
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-                        <div class="single_footer_area">
-                            <ul class="footer_widget_menu">
-                                <li><a href="#">About</a></li>
-                                {{!-- <li><a href="#">Blog</a></li>  --}}
-                                <li><a href="#">Faq</a></li>
-                                <li><a href="#">Returns</a></li>
-                             <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Footer Area Start -->
-                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-                        <div class="single_footer_area">
-                            <ul class="footer_widget_menu">
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Our Policies</a></li>
-                                <li><a href="#">Afiliates</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Single Footer Area Start -->
-                    <div class="col-12 col-lg-5">
-                        <div class="single_footer_area">
-                            <div class="footer_heading mb-30">
-                                <h6>Hi,there we are Nexo Group</h6>
-                         
-                            <div class="subscribtion_form">
-                                <form action="#" method="post">
-                                    <input type="email" name="mail" class="mail" placeholder="Your email here">
-                                    <button type="submit" class="submit">Subscribe</button>
-                                </form>
-                            </div>
-                             <div class="copywrite_text d-flex align-items-center">
-                                <p>We the Nexo Group, are the top selling Platform in online selling sites almost in all Countries for Last 6 years.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="line"></div>
-                
+
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous" defer></script>
+  <script>
+    // JavaScript to hide the message after 3 seconds
+    window.addEventListener('DOMContentLoaded', () => {
+      const messageElement = document.querySelector('.message');
+      const iconElement = document.querySelector('.icon');
+    });
+  </script>
+
+
+
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous" defer></script>
+  <script>
+    // JavaScript to hide the message after 3 seconds
+    window.addEventListener('DOMContentLoaded', () => {
+      const messageElement = document.querySelector('.message');
+      const iconElement = document.querySelector('.icon');
+    });
+  </script>
+
+
  
 
-                 {{!-- Footer Bottom Area Start  --}}
-                <div class="footer_bottom_area">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="footer_social_area text-center">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        </body>
+  </body>
 
-</html>
+  </html>
