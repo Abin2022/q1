@@ -1,14 +1,9 @@
-
-
-
-
-
 <style>
   .card {
-   width: 50%;
+    width: 50%;
     max-width: 655px;
     padding: 30px;
-    
+
     border: 1px solid #ccc;
     border-radius: 137px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -18,9 +13,9 @@
     align-items: center;
     justify-content: center;
     box-shadow: inset 0 0 6px rgba(0, 0, 1, 0.30);
-}
+  }
 
-  
+
 
   .message-container {
     display: flex;
@@ -34,18 +29,20 @@
   }
 
   .message {
-        font-size: 34px;
+    font-size: 34px;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-name: celebration;
-    animation-timing-function: ease-in-out; /* Add easing for smooth zoom effect */
+    animation-timing-function: ease-in-out;
+    /* Add easing for smooth zoom effect */
   }
 
   .icon {
     font-size: 48px;
     margin-top: 20px;
     margin-bottom: 20px;
-    color: green; /* Set the icon color to green */
+    color: green;
+    /* Set the icon color to green */
   }
 
   .row {
@@ -98,9 +95,11 @@
     0% {
       transform: scale(1);
     }
+
     50% {
       transform: scale(1.2);
     }
+
     100% {
       transform: scale(1);
     }
@@ -114,17 +113,11 @@
 
 <div class="message-container">
   <div class="card">
-    <div class="message"   >
-"You have been blocked by the Nexo Admin."
+    <div class="message">
+      "You have been blocked by the Nexo Admin."
     </div>
     <div class="icon">
-      {{!-- <!-- Add the second verification tick icon -->
-      <i class="fas fa-check-circle"></i>
-    </div> --}}
-    {{!-- <div class="row">
-      <a class="btn btn-dark btn-lg" href="/">Go Login</a>
-      <a class="btn btn-warning btn-lg" href="/signup">Go to sign-up</a>
-    </div> --}}
+   
   </div>
 </div>
 
@@ -151,8 +144,9 @@
 </script>
 
 
-  {{!-- <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div> --}}
 
 
-  </body>
+
+</body>
+
 </html>

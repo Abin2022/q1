@@ -75,10 +75,6 @@ router.post('/verifyOtp',userControllers.verifyOtp)
    router.get('/delete-address',auth.isLogin,userControllers.deleteAddress);
    router.post('/edit-address',userControllers.editAddress);
 
-
-// router.post('/editCheckoutAddress ',userControllers.editCheckoutAddress);
-// router.post('/edit-addressCheckoutPage',userControllers.editAddressCheckoutPage);
-
  router.get('/checkout',auth.isLogin,userControllers.loadCheckout);
  router.post('/change-address',userControllers.changeAddress);
  router.post('/add-new-address',userControllers.addNewAddress);
@@ -120,7 +116,6 @@ router.post('/shop-page',userControllers.shopOperations)
  router.post('/generate-wallet-recharge-order',userControllers.generateWalletRechargeOrder)
  router.post('/verify-wallet-recharge-payment',userControllers.verifyWalletRecharge)
 
-//  router.get('/mobile',auth.isLogin,userControllers.mobilePage)
  router.get('/mobile',auth.isLogin,userControllers.mobilePage)
  router.get('/laptop',auth.isLogin,userControllers.laptopPage)
 

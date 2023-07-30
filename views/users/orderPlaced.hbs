@@ -1,22 +1,15 @@
-
-
-
-
-
-
 <style>
+  body {
+    margin: 0;
+    color: #d22111;
+    background: #ffffff;
+    font: 600 16px/18px 'Open Sans', sans-serif;
+    background-image: url('/img/bg-img/signupbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 
-    body {
-  margin: 0;
-  color: #d22111;
-  background: #ffffff;
-  font: 600 16px/18px 'Open Sans', sans-serif;
-  background-image: url('/img/bg-img/signupbg.jpg');
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  
-  background-position: center; 
-}
+    background-position: center;
+  }
 
   .card {
     width: 50%;
@@ -48,7 +41,7 @@
   }
 
   .message {
-    
+
     font-size: 15px;
     animation-duration: 2s;
     animation-iteration-count: infinite;
@@ -127,22 +120,24 @@
 
 
   /* Add your preferred colors and styles here */
-.attractive-button {
-  background-color: #47494b; /* Blue color, change to your preferred color */
-  color: #fff; /* White text, change to your preferred text color */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease-in-out;
-}
+  .attractive-button {
+    background-color: #47494b;
+    /* Blue color, change to your preferred color */
+    color: #fff;
+    /* White text, change to your preferred text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease-in-out;
+  }
 
-.attractive-button:hover {
-  background-color: crimson; /* Darker shade on hover, change to your preferred color */
-}
-
+  .attractive-button:hover {
+    background-color: crimson;
+    /* Darker shade on hover, change to your preferred color */
+  }
 </style>
 
 
@@ -154,13 +149,13 @@
   <div class="card">
 
     <div class="message">
-    <h1>"ORDER PLACED"</h1>
-    
-   
+      <h1>"ORDER PLACED"</h1>
+
+
     </div>
     <br>
     <br>
-<button class="attractive-button" onclick="window.location.href='/order-details'">View Your Order</button>
+    <button class="attractive-button" onclick="window.location.href='/order-details'">View Your Order</button>
     <br>
     <h4>{{error.message}}</h4>
 
@@ -192,7 +187,7 @@
   </script>
 
 
- 
+
 
   </body>
 

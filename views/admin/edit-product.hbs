@@ -62,22 +62,25 @@
                         <span>Admin</span>
                     </div>
                 </div>
-                  <div class="navbar-nav w-100">
-                    <a href="/admin/home" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <div class="navbar-nav w-100">
+                    <a href="/admin/home" class="nav-item nav-link "><i
+                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <br>
                     <a href="/admin/category" class="nav-item nav-link"><i class="fa fa-folder"></i>CATEGORY</a>
-                      <br>
-                    <a href="/admin/add-products" class="nav-item nav-link active"><i class="fa fa-cube"></i>Products</a>
-                      <br>
-                    <a href="/admin/user" class="nav-item nav-link"><i class="fa fa-user"></i>USERS</a>  
-                      <br>
-                       <a href="/admin/orders" class="nav-item nav-link"><i class="fa fa-shopping-cart me-2"></i>ORDERS</a>
-                         <br>
-                          <a href="/admin/manage-coupons" class="nav-item nav-link"><i class="fas fa-tags"></i>COUPONS</a>
-                            <br>
-                    <a href="/admin/sales-report-page" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Sales Report</a>
-                    
-                    </div>
+                    <br>
+                    <a href="/admin/add-products" class="nav-item nav-link active"><i
+                            class="fa fa-cube"></i>Products</a>
+                    <br>
+                    <a href="/admin/user" class="nav-item nav-link"><i class="fa fa-user"></i>USERS</a>
+                    <br>
+                    <a href="/admin/orders" class="nav-item nav-link"><i class="fa fa-shopping-cart me-2"></i>ORDERS</a>
+                    <br>
+                    <a href="/admin/manage-coupons" class="nav-item nav-link"><i class="fas fa-tags"></i>COUPONS</a>
+                    <br>
+                    <a href="/admin/sales-report-page" class="nav-item nav-link"><i
+                            class="fa fa-chart-bar me-2"></i>Sales Report</a>
+
+                </div>
             </nav>
         </div>
         <!-- Sidebar End -->
@@ -205,48 +208,48 @@
 
                 <br>
                 {{!-- <form action="/admin/edit-product?id" method="post" enctype="multipart/form-data"> --}}
-                <form action="/admin/edit-product/{{product._id}}" method="post" enctype="multipart/form-data">
-                    <h2 class="mb-3">Edit Product</h2>
+                    <form action="/admin/edit-product/{{product._id}}" method="post" enctype="multipart/form-data">
+                        <h2 class="mb-3">Edit Product</h2>
 
 
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Brand</label>
-                        <input type="String" name="brand" class="form-control" value="{{product.brand}}" required>
-                    </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Brand</label>
+                            <input type="String" name="brand" class="form-control" value="{{product.brand}}" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Product Name</label>
-                        <input type="String" name="productname" class="form-control" value="{{product.productname}}"
-                            required>
-                    </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Product Name</label>
+                            <input type="String" name="productname" class="form-control" value="{{product.productname}}"
+                                required>
+                        </div>
 
 
-                   
+
 
                         <div class="row mb-3">
                             <label for="category" class="form-label">CATEGORY</label>
 
-                           
-                             <div class="col-sm-10">
-                            <select name="category" class="form-control"  required>
-                                <option selected>{{product.category}}</option>
-                                {{#each categories}}
-                                <option value="{{this.category}}">{{this.category}}</option>
-                                {{/each}}
-                            </select>
-                        </div>
+
+                            <div class="col-sm-10">
+                                <select name="category" class="form-control" required>
+                                    <option selected>{{product.category}}</option>
+                                    {{#each categories}}
+                                    <option value="{{this.category}}">{{this.category}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
                         </div>
 
 
                         <br>
-                          <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">STOCK</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="stock" class="form-control" id="inputEmail3"
-                                value="{{product.inStock}}" required>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">STOCK</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="stock" class="form-control" id="inputEmail3"
+                                    value="{{product.inStock}}" required>
+                            </div>
                         </div>
-                    </div>
-                          <br>
+                        <br>
                         <div class="mb-3">
                             <label for="email" class="form-label">Price</label>
                             <input type="Number" name="price" class="form-control" value="{{product.price}}" required>
@@ -254,8 +257,10 @@
 
 
                         <div class="mb-3">
-                            <label data-productid="{{product._id}}" id="img" for="image" class="form-label">Image</label>
-                            <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" multiple required >
+                            <label data-productid="{{product._id}}" id="img" for="image"
+                                class="form-label">Image</label>
+                            <input type="file" class="custom-file-input" id="image" name="image" accept="image/*"
+                                multiple required>
 
                             <div class="image-container">
 
@@ -263,25 +268,14 @@
                                 <div class="image-item">
 
                                     <!-- Each input should have a unique name, so let's add an index to the name -->
-                             
+
                                     <img src="/uploads/{{this}}" alt="" class="image-preview">
 
-                                    
+
                                 </div>
                                 {{/each}}
                             </div>
                         </div>
-
-
-
-
-                        
-
-
-
-
-
-
 
                         <br>
                         <br>
@@ -318,8 +312,8 @@
                             <a href="" class="btn btn-primary">Cancel</a>
 
                         </div>
-                </form>
-                {{!-- {{/with}} --}}
+                    </form>
+                    {{!-- {{/with}} --}}
 
             </div>
 
@@ -403,8 +397,8 @@
         let productId = $('#img').data('productid')
         console.log(imgName)
         console.log(productId)
-        $.ajax({ 
-           
+        $.ajax({
+
             url: '/admin/delete-img',
             method: 'delete',
             data: { imgName, productId },

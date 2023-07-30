@@ -1,55 +1,53 @@
+<link rel="stylesheet" href="/stylesheets/forget.css">
+{{!--
+<link rel="stylesheet" href="/stylesheets/adminlogin.css"> --}}
 
-
- 	<link rel="stylesheet" href="/stylesheets/forget.css">  
-     {{!-- <link rel="stylesheet" href="/stylesheets/adminlogin.css"> --}}
-
-     <style>
-	  body {
-  margin: 0;
-  color: #161414;
-  background: #ffffff;
-  font: 600 16px/18px 'Open Sans', sans-serif;
-  background-image: url('/img/bg-img/signupbg.jpg');
-  background-repeat: no-repeat; 
-  background-size: cover; 
-  text-align: center;
-  background-position: center; 
-}
+<style>
+  body {
+    margin: 0;
+    color: #161414;
+    background: #ffffff;
+    font: 600 16px/18px 'Open Sans', sans-serif;
+    background-image: url('/img/bg-img/signupbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    background-position: center;
+  }
 </style>
 
-		<div class="row">
-		
-      
-			<div class="col align-items-center flex-col sign-up">
-				<div class="form-wrapper align-items-center">
-					<div class="form sign-up">
+<div class="row">
 
-            {{!-- here --}}
-            <form method="post" action="/admin">
-            <div>  
-                <h2>Admin Login</h2>
-            </div>
-  <div class="input-group">
-    <i class='bx bx-mail-send'></i>
-    <input type="email" name="email" placeholder=" Enter your Email" >
+
+  <div class="col align-items-center flex-col sign-up">
+    <div class="form-wrapper align-items-center">
+      <div class="form sign-up">
+
+        {{!-- here --}}
+        <form method="post" action="/admin">
+          <div>
+            <h2>Admin Login</h2>
+          </div>
+          <div class="input-group">
+            <i class='bx bx-mail-send'></i>
+            <input type="email" name="email" placeholder=" Enter your Email">
+          </div>
+          <div class="input-group">
+            <i class='bx bx-mail-send'></i>
+            <input type="password" name="password" placeholder=" Enter your Password">
+          </div>
+
+
+          <button>Login</button>
+
+        </form>
+        <br>
+        <div class="message" style="color: red; text-align: center;">
+          {{#if message}}
+          {{message}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="input-group">
-    <i class='bx bx-mail-send'></i>
-    <input type="password" name="password"  placeholder=" Enter your Password"  >
-  </div>
-     
-    
- <button>Login</button>
- 
-       </form>
-       <br>
-<div class="message" style="color: red; text-align: center;">
-  {{#if message}}
-  {{message}}
-  {{/if}}
-</div>
-				</div>
-				</div>
-			
-			</div>
-       

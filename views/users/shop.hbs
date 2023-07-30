@@ -9,7 +9,7 @@
   <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
   <!-- Title  -->
-  <title>Nexo - | Cart</title>
+  <title>Nexo - | Shop</title>
 
   <!-- Favicon  -->
   <link rel="icon" href="img/core-img/favicon.ico">
@@ -212,30 +212,27 @@
       }
 
       /* Your existing styles for .search-button and .sort-button */
-
-
-
     </style>
-  <style>
-    .pagination li {
-  display: inline-block;
-  margin: 0 5px; /* Add some spacing between the page numbers */
-}
+    <style>
+      .pagination li {
+        display: inline-block;
+        margin: 0 5px;
+        /* Add some spacing between the page numbers */
+      }
 
-.pagination a {
-  text-decoration: none;
-  color: #333;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
+      .pagination a {
+        text-decoration: none;
+        color: #333;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
 
-.pagination .active a {
-  background-color: #007bff;
-  color: #fff;
-}
-
-  </style>
+      .pagination .active a {
+        background-color: #007bff;
+        color: #fff;
+      }
+    </style>
 
 
 
@@ -259,30 +256,30 @@
         <div class="row">
           <div class="col-12">
             <div class="button-bar" style="justify-content: center;">
-             
+
 
               <form action="/shop" method="GET">
-  <input type="text" name="search" placeholder="Search Products" value="{{search}}">
-  <button type="submit" class="search-button">Search</button>
-  <label for="sortField">Filter By:</label>
-  <select id="sortField" class="sort-label" name="sortField">
-    {{!-- <option value="brand" {{#if (eq sortField "brand")}}selected{{/if}}>Brand</option> --}}
-     <option value="price" {{#if (eq sortField "price")}}selected{{/if}}>Price</option>
-    <option value="productname" {{#if (eq sortField "productname")}}selected{{/if}}>Product Name</option>
-   
-  </select>
-  <label for="sortDirection">Sort By:</label>
-  <select id="sortDirection" name="sortDirection">
-    <option value="asc" {{#if (eq sortDirection "asc")}}selected{{/if}}>Low-High</option>
-    <option value="desc" {{#if (eq sortDirection "desc")}}selected{{/if}}>High-Low</option>
-  </select>
-  <button type="submit" class="sort-button">Sort</button>
+                <input type="text" name="search" placeholder="Search Products" value="{{search}}">
+                <button type="submit" class="search-button">Search</button>
+                <label for="sortField">Filter By:</label>
+                <select id="sortField" class="sort-label" name="sortField">
+                  {{!-- <option value="brand" {{#if (eq sortField "brand" )}}selected{{/if}}>Brand</option> --}}
+                  <option value="price" {{#if (eq sortField "price" )}}selected{{/if}}>Price</option>
+                  <option value="productname" {{#if (eq sortField "productname" )}}selected{{/if}}>Product Name</option>
 
-  
+                </select>
+                <label for="sortDirection">Sort By:</label>
+                <select id="sortDirection" name="sortDirection">
+                  <option value="asc" {{#if (eq sortDirection "asc" )}}selected{{/if}}>Low-High</option>
+                  <option value="desc" {{#if (eq sortDirection "desc" )}}selected{{/if}}>High-Low</option>
+                </select>
+                <button type="submit" class="sort-button">Sort</button>
 
 
- 
-</form>
+
+
+
+              </form>
 
 
 
@@ -299,25 +296,31 @@
         </div>
         <br>
         <br>
-            {{#if showPagination}}
+        {{#if showPagination}}
 
-  <ul class="pagination">
-    {{#if hasPrev}}
-      <li><a href="?page={{prevPage}}&search={{search}}&sortField={{sortField}}&sortDirection={{sortDirection}}">Previous</a></li>
-    {{/if}}
-    {{#each pages}}
-      <li {{#if current}}class="active"{{/if}}><a href="?page={{number}}&search={{search}}&sortField={{sortField}}&sortDirection={{sortDirection}}">{{number}}</a></li>
-    {{/each}}
-    {{#if hasNext}}
-      <li><a href="?page={{nextPage}}&search={{search}}&sortField={{sortField}}&sortDirection={{sortDirection}}">Next</a></li>
-    {{/if}}
-  </ul>
-{{/if}}
-<br>
-<br>
+        <ul class="pagination">
+          {{#if hasPrev}}
+          <li><a
+              href="?page={{prevPage}}&search={{search}}&sortField={{sortField}}&sortDirection={{sortDirection}}">Previous</a>
+          </li>
+          {{/if}}
+          {{#each pages}}
+          <li {{#if current}}class="active" {{/if}}><a
+              href="?page={{number}}&search={{search}}&sortField={{sortField}}&sortDirection={{sortDirection}}">{{number}}</a>
+          </li>
+          {{/each}}
+          {{#if hasNext}}
+          <li><a
+              href="?page={{nextPage}}&search={{search}}&sortField={{sortField}}&sortDirection={{sortDirection}}">Next</a>
+          </li>
+          {{/if}}
+        </ul>
+        {{/if}}
+        <br>
+        <br>
 
         <div class="row karl-new-arrivals">
-      
+
           {{#each Product}}
           <div class="col-12 col-sm-6 col-md-4 mb-4">
             <!-- Product card code here -->
@@ -344,7 +347,7 @@
         </div>
 
         <br>
-         
+
 
       </div>
 </body>
