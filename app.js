@@ -13,10 +13,10 @@ const handlebarsHelpers = require("handlebars-helpers");
 
 
 var mongoose = require("mongoose")
-mongoose.connect("mongodb://127.0.0.1:27017/user")
+// mongoose.connect("mongodb://127.0.0.1:27017/user")
 
 // moongoose.connect("mongodb://localhost:27017/user")
-// mongoose.connect("mongodb+srv://tomailabin:Xihh2Lxtk88c47Ab@cluster0.6rzwv9g.mongodb.net/",console.log("Connected To DB...."))
+mongoose.connect("mongodb+srv://tomailabin:Xihh2Lxtk88c47Ab@cluster0.6rzwv9g.mongodb.net/",console.log("Connected To DB...."))
  
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
